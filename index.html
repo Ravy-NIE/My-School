@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>វិទ្យាល័យ ឧដុង្គ | Oudong High School Official Website</title>
+    <meta name="description" content="គេហទំព័រផ្លូវការរបស់វិទ្យាល័យឧដុង្គ បង្ហាញរចនាសម្ព័ន្ធបុគ្គលិក ព័ត៌មានសកម្មភាពសាលា ចំណេះដឹងថ្មីៗ និងស្តង់ដាសំខាន់ៗ">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/logo/school_logo.png" type="image/png">
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome 6.5 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 1. Sticky Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="assets/images/logo/school_logo.png" alt="Oudong High School Logo" class="brand-logo">
+                <div class="brand-text">
+                    <span class="brand-name">វិទ្យាល័យ ឧដុង្គ</span>
+                    <span class="brand-sub">OUDONG HIGH SCHOOL</span>
+                </div>
+            </a>
+            
+            <div class="d-flex align-items-center gap-2 ms-auto me-2 me-lg-0 order-lg-last">
+                <button class="theme-btn theme-toggle-btn" aria-label="Toggle Theme" title="ប្តូរពន្លឺ/ងងឹត">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+
+            <button class="navbar-toggler border-0 ms-1" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="#home">ទំព័រដើម</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">អំពីសាលា</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#staff">រចនាសម្ព័ន្ធបុគ្គលិក</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#activities">ព័ត៌មាន & សកម្មភាព</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#knowledge">ចំណេះដឹងថ្មីៗ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#standards">ស្តង់ដាសំខាន់ៗ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">ទំនាក់ទំនង</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3. Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-graduation-cap"></i> សាលារៀនគំរូ នៃតំបន់ប្រវត្តិសាស្ត្រឧដុង្គ
+                    </div>
+                    <h1 class="hero-title">ស្វាគមន៍មកកាន់ គេហទំព័រផ្លូវការ <br><span class="text-warning">វិទ្យាល័យ ឧដុង្គ</span></h1>
+                    <p class="hero-subtitle">
+                        យើងបណ្តុះបណ្តាលសិស្សានុសិស្សឲ្យប្រកបដោយ «ចំណេះដឹង សីលធម៌ គុណធម៌ និង បំណិនជីវិត» ដើម្បីក្លាយជាទំពាំងស្នងឫស្សីដ៏រឹងមាំសម្រាប់ប្រទេសជាតិ។
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#staff" class="btn btn-gold"><i class="fa-solid fa-users me-2"></i> រចនាសម្ព័ន្ធបុគ្គលិក</a>
+                        <a href="#activities" class="btn btn-outline-glass"><i class="fa-solid fa-newspaper me-2"></i> សកម្មភាពសាលា</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Quick Statistics Counters -->
+    <div class="container stats-container">
+        <div class="row g-4">
+            <div class="col-md-3 col-6">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                    <div class="stat-number" id="stat-students">2,450+</div>
+                    <div class="stat-label">សិស្សានុសិស្សសរុប</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                    <div class="stat-number" id="stat-teachers">115</div>
+                    <div class="stat-label">លោកគ្រូ អ្នកគ្រូ</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-school"></i></div>
+                    <div class="stat-number" id="stat-classrooms">48</div>
+                    <div class="stat-label">បន្ទប់សិក្សា & ពិសោធន៍</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-trophy"></i></div>
+                    <div class="stat-number" id="stat-passrate">89.5%</div>
+                    <div class="stat-label">អត្រាប្រឡងជាប់បាក់ឌុប</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. About School & Vision Mission Section -->
+    <section id="about" class="py-5 my-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="assets/images/banner/hero_bg.png" alt="Oudong Campus" class="img-fluid rounded-4 shadow-lg">
+                        <div class="position-absolute bottom-0 start-0 bg-success text-white p-4 rounded-4 m-3 d-none d-sm-block" style="background: linear-gradient(135deg, #064e3b 0%, #047857 100%) !important;">
+                            <h4 class="khmer-title fs-5 mb-1">បង្កើតឡើងនៅឆ្នាំ ១៩៧៨</h4>
+                            <p class="mb-0 small opacity-90">បម្រើការអប់រំ និងអភិវឌ្ឍន៍ធនធានមនុស្សជាង ៤៨ ឆ្នាំ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <span class="section-badge">ចក្ខុវិស័យ និងបេសកកម្ម</span>
+                    <h2 class="section-title text-start mb-4">វិទ្យាល័យ ឧដុង្គ</h2>
+                    <p class="text-muted">
+                        វិទ្យាល័យឧដុង្គ ស្ថិតនៅក្នុងតំបន់ប្រវត្តិសាស្ត្រក្រុងឧដុង្គ ខេត្តកំពង់ស្ពឺ។ យើងបានបំពេញបេសកកម្មយ៉ាងសកម្មក្នុងការអប់រំ បណ្តុះបណ្តាលសិស្សានុសិស្សប្រកបដោយគុណភាព សីលធម៌ និងសមត្ថភាពបច្ចេកវិទ្យា ឆ្លើយតបតាមស្តង់ដាសាលារៀនគំរូរបស់ក្រសួងអប់រំ យុវជន និងកីឡា។
+                    </p>
+                    
+                    <div class="row g-3 mt-3">
+                        <div class="col-sm-6">
+                            <div class="p-3 border rounded-3 card-bg">
+                                <i class="fa-solid fa-eye text-success fs-3 mb-2"></i>
+                                <h4 class="khmer-title fs-6">ចក្ខុវិស័យ</h4>
+                                <p class="small text-muted mb-0">ក្លាយជាសាលារៀនគំរូផ្នែកបច្ចេកវិទ្យា វិទ្យាសាស្ត្រ និងគុណធម៌ខ្ពស់។</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-3 border rounded-3 card-bg">
+                                <i class="fa-solid fa-bullseye text-warning fs-3 mb-2"></i>
+                                <h4 class="khmer-title fs-6">បេសកកម្ម</h4>
+                                <p class="small text-muted mb-0">ផ្តល់ការអប់រំប្រកបដោយសមធម៌ បរិយាបន្ន និងការអភិវឌ្ឍបំណិនសតវត្សរ៍ទី២១។</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. School Staff & Organization Chart Section -->
+    <section id="staff" class="py-5">
+        <div class="container">
+            <div class="section-title-wrap">
+                <span class="section-badge">រចនាសម្ព័ន្ធគ្រប់គ្រង</span>
+                <h2 class="section-title">រចនាសម្ព័នបុគ្គលិកសាលា</h2>
+                <div class="section-line"></div>
+                <p class="text-muted mt-2">គណៈគ្រប់គ្រង លោកគ្រូ អ្នកគ្រូ និងបុគ្គលិកអប់រំនៃវិទ្យាល័យឧដុង្គ</p>
+            </div>
+
+            <!-- Filter Buttons & Subject Dropdown -->
+            <div class="filter-tabs" id="staff-filters">
+                <button class="filter-btn active" data-filter="all">ទាំងអស់</button>
+                <button class="filter-btn" data-filter="management">គណៈគ្រប់គ្រង</button>
+                <button class="filter-btn" data-filter="stem">វិទ្យាសាស្ត្រពិត (STEM)</button>
+                <button class="filter-btn" data-filter="social">វិទ្យាសាស្ត្រសង្គម</button>
+                <button class="filter-btn" data-filter="admin">រដ្ឋបាល & បណ្ណាល័យ</button>
+
+                <!-- Subject Dropdown Filter -->
+                <div class="subject-select-wrap ms-lg-2">
+                    <i class="fa-solid fa-filter text-warning"></i>
+                    <label for="staff-subject-select">មុខវិជ្ជាបង្រៀន៖</label>
+                    <select id="staff-subject-select" class="subject-select">
+                        <option value="all">មុខវិជ្ជាទាំងអស់</option>
+                        <optgroup label="វិទ្យាសាស្ត្រពិត (STEM)">
+                            <option value="math">គណិតវិទ្យា</option>
+                            <option value="physics">រូបវិទ្យា</option>
+                            <option value="chemistry">គីមីវិទ្យា</option>
+                            <option value="biology">ជីវវិទ្យា</option>
+                            <option value="ict">ព័ត៌មានវិទ្យា (ICT)</option>
+                        </optgroup>
+                        <optgroup label="វិទ្យាសាស្ត្រសង្គម">
+                            <option value="khmer">អក្សរសាស្ត្រខ្មែរ</option>
+                            <option value="history">ប្រវត្តិវិទ្យា</option>
+                            <option value="geography">ភូមិវិទ្យា</option>
+                            <option value="english">ភាសាអង់គ្លេស</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Staff Grid Container -->
+            <div class="row" id="staff-grid">
+                <!-- Dynamically rendered via js/main.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. School Activities & News Section -->
+    <section id="activities" class="py-5">
+        <div class="container">
+            <div class="section-title-wrap">
+                <span class="section-badge">ព្រឹត្តិការណ៍ & ព័ត៌មាន</span>
+                <h2 class="section-title">ព័ត៌មានផ្សេងៗអំពីសកម្មភាពសាលា</h2>
+                <div class="section-line"></div>
+                <p class="text-muted mt-2">តាមដានសកម្មភាពសិក្សា ការប្រកួតប្រជែង STEM កីឡា និងយុទ្ធនាការសង្គម</p>
+            </div>
+
+            <!-- Activities Filter Buttons -->
+            <div class="filter-tabs" id="activity-filters">
+                <button class="filter-btn active" data-filter="all">ទាំងអស់</button>
+                <button class="filter-btn" data-filter="stem">STEM & វិទ្យាសាស្ត្រ</button>
+                <button class="filter-btn" data-filter="sports">កីឡា</button>
+                <button class="filter-btn" data-filter="community">យុវជន & បរិស្ថាន</button>
+                <button class="filter-btn" data-filter="exam">ថ្នាក់បំប៉នប្រឡង</button>
+            </div>
+
+            <!-- Activities Grid Container -->
+            <div class="row" id="activities-grid">
+                <!-- Dynamically rendered via js/main.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Knowledge Section -->
+    <section id="knowledge" class="py-5">
+        <div class="container">
+            <div class="section-title-wrap">
+                <span class="section-badge">មេរៀន & គន្លឹះសិក្សា</span>
+                <h2 class="section-title">ចំណេះដឹងថ្មីៗ សម្រាប់សិស្សានុសិស្ស</h2>
+                <div class="section-line"></div>
+                <p class="text-muted mt-2">អត្ថបទអប់រំ គន្លឹះប្រឡងបាក់ឌុប និងឯកសារស្វ័យសិក្សាទាញយកដោយឥតគិតថ្លៃ</p>
+            </div>
+
+            <!-- Knowledge Grid Container -->
+            <div class="row" id="knowledge-grid">
+                <!-- Dynamically rendered via js/main.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. School Standards & Internal Rules Section -->
+    <section id="standards" class="py-5">
+        <div class="container">
+            <div class="section-title-wrap">
+                <span class="section-badge">ស្តង់ដារគុណភាព & វិន័យ</span>
+                <h2 class="section-title">ស្តង់ដាសំខាន់ៗ និងបទបញ្ជាផ្ទៃក្នុង</h2>
+                <div class="section-line"></div>
+                <p class="text-muted mt-2">គោលការណ៍ណែនាំ ស្តង់ដាសាលារៀនគំរូ និងបទបញ្ជាផ្ទៃក្នុងសម្រាប់លោកគ្រូអ្នកគ្រូ និងសិស្ស</p>
+            </div>
+
+            <!-- Standards Grid Container -->
+            <div class="row" id="standards-grid">
+                <!-- Dynamically rendered via js/main.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Contact & Map Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="section-title-wrap">
+                <span class="section-badge">ទាក់ទងយើង</span>
+                <h2 class="section-title">ព័ត៌មានទំនាក់ទំនង & ទីតាំងសាលា</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <div class="p-4 rounded-4 shadow-sm h-100 card-bg border">
+                        <h4 class="khmer-title fs-5 mb-4 text-success">អាសយដ្ឋាន & ម៉ោងធ្វើការ</h4>
+                        
+                        <div class="d-flex gap-3 mb-4">
+                            <div class="fs-4 text-warning"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">ទីតាំងវិទ្យាល័យ</h6>
+                                <p class="text-muted small mb-0">ផ្លូវជាតិលេខ ៥, ក្រុងឧដុង្គម៉ែជ័យ, ខេត្តកំពង់ស្ពឺ (ជិតភ្នំឧដុង្គ)</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3 mb-4">
+                            <div class="fs-4 text-success"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">លេខទូរស័ព្ទទំនាក់ទំនង</h6>
+                                <p class="text-muted small mb-0">+855 (0) 12 345 678 / +855 (0) 97 888 999</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-3 mb-4">
+                            <div class="fs-4 text-info"><i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">ម៉ោងសិក្សា & រដ្ឋបាល</h6>
+                                <p class="text-muted small mb-0">ច័ន្ទ - សៅរ៍ ៖ 7:00 AM - 11:30 AM | 1:00 PM - 5:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="border-top pt-4 mt-2">
+                            <h6 class="fw-bold mb-3">បណ្តាញសង្គមផ្លូវការ</h6>
+                            <div class="d-flex gap-2">
+                                <a href="https://facebook.com" class="btn btn-outline-primary rounded-circle" style="width:40px; height:40px;" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="https://telegram.org" class="btn btn-outline-info rounded-circle" style="width:40px; height:40px;" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                                <a href="mailto:info@oudonghighschool.edu.kh" class="btn btn-outline-danger rounded-circle" style="width:40px; height:40px;"><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="p-4 rounded-4 shadow-sm h-100 card-bg border">
+                        <h4 class="khmer-title fs-5 mb-4 text-success">ផ្ញើសារសាកសួរព័ត៌មាន</h4>
+                        <form onsubmit="event.preventDefault(); alert('សាររបស់លោកអ្នកត្រូវបានផ្ញើរួចរាល់! ក្រុមការងាររដ្ឋបាលនឹងទាក់ទងត្រឡប់ទៅវិញ។');">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">ឈ្មោះពេញ</label>
+                                    <input type="text" class="form-control rounded-3" placeholder="ឧទាហរណ៍៖ សុខ ជា" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-bold">លេខទូរស័ព្ទ / អ៊ីមែល</label>
+                                    <input type="text" class="form-control rounded-3" placeholder="012 xxx xxx" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold">ប្រធានបទ</label>
+                                    <select class="form-select rounded-3">
+                                        <option>សាកសួរការចុះឈ្មោះចូលរៀន</option>
+                                        <option>ព័ត៌មានអាហារូបករណ៍</option>
+                                        <option>ទំនាក់ទំនងអាណាព្យាបាលសិស្ស</option>
+                                        <option>ផ្សេងៗ</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold">ខ្លឹមសារសារ</label>
+                                    <textarea class="form-control rounded-3" rows="4" placeholder="សរសេរសាររបស់អ្នកនៅទីនេះ..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-gold rounded-pill w-100">
+                                        <i class="fa-solid fa-paper-plane me-2"></i> ផ្ញើសារទំនាក់ទំនង
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <img src="assets/images/logo/school_logo.png" alt="Logo" style="width: 45px;">
+                        <h5 class="m-0 text-white">វិទ្យាល័យ ឧដុង្គ</h5>
+                    </div>
+                    <p class="small text-muted mb-3">
+                        បណ្តុះបណ្តាលសិស្សានុសិស្សឲ្យប្រកបដោយ ចំណេះដឹង សីលធម៌ គុណធម៌ និងបំណិនជីវិត ឆ្លើយតបតាមស្តង់ដាសាលារៀនគំរូនៃព្រះរាជាណាចក្រកម្ពុជា។
+                    </p>
+
+                    <!-- អាសយដ្ឋាន និង ទំនាក់ទំនង -->
+                    <div class="footer-contact-info small text-light mb-3">
+                        <div class="mb-2"><i class="fa-solid fa-location-dot text-warning me-2"></i> <strong>អាសយដ្ឋាន៖</strong> ផ្លូវជាតិលេខ ៥, ក្រុងឧដុង្គម៉ែជ័យ, ខេត្តកំពង់ស្ពឺ</div>
+                        <div class="mb-2"><i class="fa-solid fa-phone text-success me-2"></i> <strong>ទូរស័ព្ទ៖</strong> 012 345 678 / 097 888 999</div>
+                        <div class="mb-2"><i class="fa-solid fa-envelope text-info me-2"></i> <strong>អ៊ីមែល៖</strong> info@oudonghighschool.edu.kh</div>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <a href="https://facebook.com" class="btn btn-sm btn-outline-light rounded-circle" style="width:36px; height:36px;" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://telegram.org" class="btn btn-sm btn-outline-info rounded-circle" style="width:36px; height:36px;" target="_blank" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="https://youtube.com" class="btn btn-sm btn-outline-danger rounded-circle" style="width:36px; height:36px;" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h5>តំណភ្ជាប់រហ័ស</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#home">ទំព័រដើម</a></li>
+                        <li class="mb-2"><a href="#about">អំពីសាលា</a></li>
+                        <li class="mb-2"><a href="#staff">រចនាសម្ព័ន្ធបុគ្គលិក</a></li>
+                        <li class="mb-2"><a href="#activities">សកម្មភាពសាលា</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <h5>ព័ត៌មាន & ស្តង់ដារ</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#knowledge">ចំណេះដឹងថ្មីៗ</a></li>
+                        <li class="mb-2"><a href="#standards">ស្តង់ដាសាលារៀនគំរូ</a></li>
+                        <li class="mb-2"><a href="#standards">បទបញ្ជាផ្ទៃក្នុង</a></li>
+                        <li class="mb-2"><a href="#contact">ទំនាក់ទំនង</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>ទីតាំងលើផែនទី</h5>
+                    <div class="rounded-3 overflow-hidden border" style="height: 140px; background: #1e293b;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15627.18579975769!2d104.7397!3d11.8152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310931215b22b64d%3A0x6b7bb7f9b8c2901!2sOudong!5e0!3m2!1sen!2skh!4v1700000000000!5m2!1sen!2skh" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <div class="container">
+                <p class="mb-0 small text-muted">
+                    © ២០២៦ វិទ្យាល័យ ឧដុង្គ (Oudong High School). រក្សាសិទ្ធិគ្រប់យ៉ាង។ 
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Staff Detail Modal -->
+    <div class="modal fade" id="staffDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title khmer-title fs-6 m-0"><i class="fa-solid fa-id-badge me-2"></i> ប្រវត្តិរូបសង្ខេបបុគ្គលិក</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <img id="modalStaffImg" src="" alt="" class="rounded-circle shadow-sm mb-3" style="width: 130px; height: 130px; object-fit: cover; border: 4px solid #10b981;">
+                    <h3 id="modalStaffName" class="khmer-title fs-5 mb-1"></h3>
+                    <p id="modalStaffPosition" class="text-success fw-bold small mb-3"></p>
+                    
+                    <div class="text-start bg-light p-3 rounded-3 small mb-3">
+                        <div class="mb-2"><strong>កម្រិតវប្បធម៌៖</strong> <span id="modalStaffDegree"></span></div>
+                        <div class="mb-2"><strong>បទពិសោធន៍៖</strong> <span id="modalStaffExperience"></span></div>
+                        <div class="mb-2"><strong>ទូរស័ព្ទ៖</strong> <span id="modalStaffPhone"></span></div>
+                        <div><strong>អ៊ីមែល៖</strong> <span id="modalStaffEmail"></span></div>
+                    </div>
+                    
+                    <div class="text-start">
+                        <strong class="d-block mb-1">ជីវប្រវត្តិ & ការងារ៖</strong>
+                        <p id="modalStaffBio" class="text-muted small mb-0"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- News Detail Modal -->
+    <div class="modal fade" id="newsDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title khmer-title fs-6 m-0"><i class="fa-solid fa-newspaper me-2"></i> ព័ត៌មានលម្អិត</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <img id="modalNewsImg" src="" alt="" class="img-fluid rounded-4 mb-3 w-100" style="max-height: 380px; object-fit: cover;">
+                    <small id="modalNewsDate" class="text-warning fw-bold d-block mb-2"></small>
+                    <h3 id="modalNewsTitle" class="khmer-title fs-4 mb-3"></h3>
+                    <p id="modalNewsContent" class="text-muted" style="line-height: 1.8;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Data & Main JS -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
