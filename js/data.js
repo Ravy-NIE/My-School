@@ -134,7 +134,7 @@ const SCHOOL_DATA = {
             subject: "ict",
             degree: "បរិញ្ញាបត្រ វិទ្យាសាស្ត្រកុំព្យូទ័រ",
             experience: "៦ ឆ្នាំ",
-            image: "assets/images/staff/principal.png",
+            image: "assets/images/staff/Mr Hien Pheas.jpg",
             phone: "012 111 004",
             email: "hien.pheas@oudonghighschool.edu.kh",
             bio: "បង្រៀនជំនាញព័ត៌មានវិទ្យា កូដ និងការប្រើប្រាស់កុំព្យូទ័រក្នុងជីវភាពរស់នៅ។"
@@ -148,7 +148,7 @@ const SCHOOL_DATA = {
             subject: "ict",
             degree: "បរិញ្ញាបត្រ ព័ត៌មានវិទ្យា",
             experience: "៥ ឆ្នាំ",
-            image: "assets/images/staff/principal.png",
+            image: "assets/images/staff/Mr Kong Tetdaravy.jpg",
             phone: "012 111 005",
             email: "kong.titydaravy@oudonghighschool.edu.kh",
             bio: "បង្រៀនកម្មវិធីសិក្សាឌីជីថល ICT និងការបង្កើតគេហទំព័រដល់សិស្សានុសិស្ស។"
@@ -344,7 +344,7 @@ const SCHOOL_DATA = {
             subject: "khmer",
             degree: "បរិញ្ញាបត្រ អក្សរសាស្ត្រខ្មែរ",
             experience: "១១ ឆ្នាំ",
-            image: "assets/images/staff/principal.png",
+            image: "assets/images/staff/Mr Pruy Chandeth.jpg",
             phone: "012 111 019",
             email: "pruy.chandeth@oudonghighschool.edu.kh",
             bio: "បង្រៀនអក្សរសាស្ត្រខ្មែរ វប្បធម៌ និងអក្សរសិល្ប៍ខ្មែរដល់សិស្សានុសិស្ស។"
@@ -694,7 +694,7 @@ const SCHOOL_DATA = {
             subject: "khmer",
             degree: "បរិញ្ញាបត្រ អក្សរសាស្ត្រខ្មែរ",
             experience: "៩ ឆ្នាំ",
-            image: "assets/images/staff/principal.png",
+            image: "assets/images/staff/Mr Phan Sophors.jpg",
             phone: "012 111 044",
             email: "phan.samphas@oudonghighschool.edu.kh",
             bio: "បង្រៀនអក្សរសាស្ត្រខ្មែរ និងអត្ថបទអក្សរសិល្ប៍ដល់សិស្សានុសិស្ស។"
@@ -736,7 +736,7 @@ const SCHOOL_DATA = {
             subject: "general",
             degree: "បរិញ្ញាបត្រ អប់រំ",
             experience: "៧ ឆ្នាំ",
-            image: "assets/images/staff/principal.png",
+            image: "assets/images/staff/Mr Sim Chantha.jpg",
             phone: "012 111 047",
             email: "sim.chantha@oudonghighschool.edu.kh",
             bio: "គ្រូបង្រៀន និងអភិវឌ្ឍសមត្ថភាពចំណេះដឹងសិស្ស។"
