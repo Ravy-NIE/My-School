@@ -159,14 +159,40 @@ h1, h2, h3, .khmer-title {
     color: #ffffff;
 }
 
-/* Hero Section */
+/* Hero Section & Background Slideshow */
 .hero-section {
     position: relative;
     min-height: 85vh;
-    background: url('../assets/images/banner/hero_bg.png') center/cover no-repeat;
+    background: #0f172a;
     display: flex;
     align-items: center;
     color: #ffffff;
+    overflow: hidden;
+}
+.hero-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.hero-bg-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out, transform 8s ease-out;
+    transform: scale(1.06);
+}
+.hero-bg-slide.active {
+    opacity: 1;
+    transform: scale(1);
 }
 .hero-overlay {
     position: absolute;
@@ -174,10 +200,36 @@ h1, h2, h3, .khmer-title {
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 1;
     background: linear-gradient(135deg, rgba(6, 78, 59, 0.92) 0%, rgba(15, 23, 42, 0.88) 100%);
 }
 [data-theme="dark"] .hero-overlay {
     background: linear-gradient(135deg, rgba(2, 44, 34, 0.95) 0%, rgba(11, 19, 41, 0.95) 100%);
+}
+
+/* Indicators / Dots for Hero Slideshow */
+.hero-slide-indicators {
+    position: absolute;
+    bottom: 25px;
+    right: 35px;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+}
+.hero-indicator-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.hero-indicator-dot:hover,
+.hero-indicator-dot.active {
+    background: var(--secondary-color);
+    border-color: #ffffff;
+    transform: scale(1.25);
 }
 .hero-content {
     position: relative;

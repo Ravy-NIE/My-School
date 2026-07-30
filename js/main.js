@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initSchoolStats();
+    initHeroSlideshow();
     renderStaff('all', 'all');
     renderActivities('all');
     renderKnowledge('all');
@@ -63,6 +64,108 @@ function initSchoolStats() {
     if (passRateEl) passRateEl.innerText = stats.passRate;
 }
 
+// ==========================================
+// 2.1 HERO BACKGROUND SLIDESHOW ENGINE
+// ==========================================
+function initHeroSlideshow() {
+    const heroSection = document.getElementById('home');
+    if (!heroSection) return;
+
+    let slides = SCHOOL_DATA.heroSlides;
+    if (!slides || !Array.isArray(slides) || slides.length === 0) {
+        slides = ['assets/images/banner/hero_bg.png'];
+    }
+
+    const validSlides = [];
+    let processed = 0;
+
+    slides.forEach((path) => {
+        const img = new Image();
+        img.onload = () => {
+            validSlides.push(path);
+            processed++;
+            if (processed === slides.length) {
+                renderHeroSlideshow(heroSection, validSlides);
+            }
+        };
+        img.onerror = () => {
+            processed++;
+            if (processed === slides.length) {
+                if (validSlides.length === 0) {
+                    validSlides.push('assets/images/banner/hero_bg.png');
+                }
+                renderHeroSlideshow(heroSection, validSlides);
+            }
+        };
+        img.src = path;
+    });
+}
+
+function renderHeroSlideshow(heroSection, slides) {
+    let bgContainer = heroSection.querySelector('.hero-bg-container');
+    if (!bgContainer) {
+        bgContainer = document.createElement('div');
+        bgContainer.className = 'hero-bg-container';
+        heroSection.insertBefore(bgContainer, heroSection.firstChild);
+    }
+    bgContainer.innerHTML = '';
+
+    slides.forEach((src, idx) => {
+        const slideEl = document.createElement('div');
+        slideEl.className = `hero-bg-slide ${idx === 0 ? 'active' : ''}`;
+        slideEl.style.backgroundImage = `url('${src}')`;
+        bgContainer.appendChild(slideEl);
+    });
+
+    if (slides.length > 1) {
+        let indicatorsWrap = heroSection.querySelector('.hero-slide-indicators');
+        if (!indicatorsWrap) {
+            indicatorsWrap = document.createElement('div');
+            indicatorsWrap.className = 'hero-slide-indicators';
+            heroSection.appendChild(indicatorsWrap);
+        }
+        indicatorsWrap.innerHTML = '';
+
+        let currentIndex = 0;
+
+        function goToSlide(idx) {
+            currentIndex = idx;
+            const slideEls = bgContainer.querySelectorAll('.hero-bg-slide');
+            const dotEls = indicatorsWrap.querySelectorAll('.hero-indicator-dot');
+
+            slideEls.forEach((el, i) => {
+                el.classList.toggle('active', i === currentIndex);
+            });
+            dotEls.forEach((el, i) => {
+                el.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        slides.forEach((_, idx) => {
+            const dot = document.createElement('div');
+            dot.className = `hero-indicator-dot ${idx === 0 ? 'active' : ''}`;
+            dot.addEventListener('click', () => {
+                goToSlide(idx);
+                resetTimer();
+            });
+            indicatorsWrap.appendChild(dot);
+        });
+
+        let timer = setInterval(() => {
+            const nextIdx = (currentIndex + 1) % slides.length;
+            goToSlide(nextIdx);
+        }, 5000);
+
+        function resetTimer() {
+            clearInterval(timer);
+            timer = setInterval(() => {
+                const nextIdx = (currentIndex + 1) % slides.length;
+                goToSlide(nextIdx);
+            }, 5000);
+        }
+    }
+}
+
 // Subject translations mapping
 const SUBJECT_LABELS = {
     'all': 'មុខវិជ្ជាទាំងអស់',
@@ -71,13 +174,86 @@ const SUBJECT_LABELS = {
     'chemistry': 'គីមីវិទ្យា',
     'biology': 'ជីវវិទ្យា',
     'ict': 'ព័ត៌មានវិទ្យា (ICT)',
+    'earth_science': 'ផែនដី និង បរិស្ថានវិទ្យា',
     'khmer': 'អក្សរសាស្ត្រខ្មែរ',
     'history': 'ប្រវត្តិវិទ្យា',
     'geography': 'ភូមិវិទ្យា',
     'english': 'ភាសាអង់គ្លេស',
+    'foreign_lang': 'ភាសាបរទេស',
     'civics': 'សីលធម៌-ពលរដ្ឋ',
-    'management': 'គ្រប់គ្រង'
+    'pe': 'អប់រំកាយ និង កីឡា',
+    'economics': 'សេដ្ឋកិច្ច',
+    'librarian': 'បណ្ណារក្ស',
+    'management': 'គ្រប់គ្រង',
+    'admin': 'រដ្ឋបាល',
+    'finance': 'គណនេយ្យ និង ហិរញ្ញវត្ថុ',
+    'general': 'គ្រូបង្រៀនទូទៅ'
 };
+
+// Mapping of subject to its primary category
+const SUBJECT_PRIMARY_CATEGORY = {
+    'math': 'stem',
+    'physics': 'stem',
+    'chemistry': 'stem',
+    'biology': 'stem',
+    'ict': 'stem',
+    'earth_science': 'stem',
+    'khmer': 'social',
+    'history': 'social',
+    'geography': 'social',
+    'english': 'social',
+    'foreign_lang': 'social',
+    'civics': 'social',
+    'pe': 'social',
+    'management': 'management',
+    'admin': 'admin',
+    'finance': 'admin',
+    'economics': 'admin',
+    'librarian': 'admin'
+};
+
+// Update active Category Tab UI button
+function syncCategoryTabUI(category) {
+    const staffFilterBtns = document.querySelectorAll('#staff-filters .filter-btn');
+    staffFilterBtns.forEach(btn => {
+        if (btn.getAttribute('data-filter') === category) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+}
+
+// Dynamically filter subject select dropdown options based on selected category
+function updateSubjectDropdownOptions(category) {
+    const subjectSelect = document.getElementById('staff-subject-select');
+    if (!subjectSelect) return;
+
+    const options = subjectSelect.querySelectorAll('option');
+    options.forEach(opt => {
+        const val = opt.value;
+        if (val === 'all') {
+            opt.hidden = false;
+            opt.disabled = false;
+        } else {
+            const primaryCat = SUBJECT_PRIMARY_CATEGORY[val] || 'social';
+            if (category === 'all' || primaryCat === category || (category === 'admin' && (primaryCat === 'admin' || primaryCat === 'management'))) {
+                opt.hidden = false;
+                opt.disabled = false;
+            } else {
+                opt.hidden = true;
+                opt.disabled = true;
+            }
+        }
+    });
+
+    // If currently selected subject is now hidden/disabled, reset subject dropdown to 'all'
+    const selectedOpt = subjectSelect.querySelector(`option[value="${subjectSelect.value}"]`);
+    if (selectedOpt && (selectedOpt.hidden || selectedOpt.disabled)) {
+        subjectSelect.value = 'all';
+        currentStaffSubject = 'all';
+    }
+}
 
 // ==========================================
 // 3. RENDER STAFF WITH CATEGORY & SUBJECT FILTERS
@@ -104,6 +280,17 @@ function renderStaff(filterCategory = 'all', filterSubject = 'all') {
     // Filter by Subject if not 'all'
     if (filterSubject !== 'all') {
         staffList = staffList.filter(s => s.subject === filterSubject);
+    }
+
+    // Fallback: If staffList is empty because filterSubject belongs to another category, switch category dynamically
+    if (staffList.length === 0 && filterSubject !== 'all') {
+        const primaryCat = SUBJECT_PRIMARY_CATEGORY[filterSubject];
+        if (primaryCat) {
+            currentStaffCategory = primaryCat;
+            syncCategoryTabUI(primaryCat);
+            updateSubjectDropdownOptions(primaryCat);
+            staffList = SCHOOL_DATA.staff.filter(s => s.subject === filterSubject);
+        }
     }
 
     if (staffList.length === 0) {
@@ -323,7 +510,7 @@ function setupEventListeners() {
             e.target.classList.add('active');
             const category = e.target.getAttribute('data-filter');
             
-            // Reset subject dropdown when changing main category if needed
+            updateSubjectDropdownOptions(category);
             renderStaff(category, currentStaffSubject);
         });
     });
@@ -332,7 +519,15 @@ function setupEventListeners() {
     const subjectSelect = document.getElementById('staff-subject-select');
     if (subjectSelect) {
         subjectSelect.addEventListener('change', (e) => {
-            renderStaff(currentStaffCategory, e.target.value);
+            const selectedSubject = e.target.value;
+            if (selectedSubject !== 'all') {
+                const targetCat = SUBJECT_PRIMARY_CATEGORY[selectedSubject];
+                if (targetCat) {
+                    syncCategoryTabUI(targetCat);
+                    currentStaffCategory = targetCat;
+                }
+            }
+            renderStaff(currentStaffCategory, selectedSubject);
         });
     }
 
