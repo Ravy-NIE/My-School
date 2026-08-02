@@ -38,6 +38,14 @@
                 <button class="theme-btn theme-toggle-btn" aria-label="Toggle Theme" title="ប្តូរពន្លឺ/ងងឹត">
                     <i class="fa-solid fa-moon"></i>
                 </button>
+                <button class="btn btn-sm btn-outline-secondary rounded-pill px-2.5 py-1 admin-toggle-btn ms-1"
+                    id="adminToggleBtn" title="គ្រប់គ្រងទិន្នន័យ (Admin Control)">
+                    <i class="fa-solid fa-user-shield me-1"></i><span class="small opacity-75">Admin</span>
+                </button>
+                <button class="btn btn-sm btn-outline-info rounded-pill px-3 fw-bold d-none ms-1"
+                    id="dbManagerBtn" data-bs-toggle="modal" data-bs-target="#dbManagerModal" title="គ្រប់គ្រង Database & Backup">
+                    <i class="fa-solid fa-database me-1"></i> Database
+                </button>
             </div>
 
             <button class="navbar-toggler border-0 ms-1" type="button" data-bs-toggle="collapse"
@@ -58,333 +66,365 @@
         </div>
     </nav>
 
-    <!-- 3. Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <div class="hero-badge">
-                        <i class="fa-solid fa-graduation-cap"></i> សាលារៀនគំរូ នៃតំបន់ប្រវត្តិសាស្ត្រឧដុង្គ
-                    </div>
-                    <h1 class="hero-title">ស្វាគមន៍មកកាន់ គេហទំព័រផ្លូវការ <br><span class="text-warning">វិទ្យាល័យ
-                            ឧដុង្គ</span></h1>
-                    <p class="hero-subtitle">
-                        យើងបណ្តុះបណ្តាលសិស្សានុសិស្សឲ្យប្រកបដោយ «ចំណេះដឹង សីលធម៌ គុណធម៌ និង បំណិនជីវិត»
-                        ដើម្បីក្លាយជាទំពាំងស្នងឫស្សីដ៏រឹងមាំសម្រាប់ប្រទេសជាតិ។
-                    </p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="#staff" class="btn btn-gold"><i class="fa-solid fa-users me-2"></i>
-                            រចនាសម្ព័ន្ធបុគ្គលិក</a>
-                        <a href="#activities" class="btn btn-outline-glass"><i class="fa-solid fa-newspaper me-2"></i>
-                            សកម្មភាពសាលា</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Main Content Container -->
+    <main id="main-content">
 
-    <!-- 4. Quick Statistics Counters -->
-    <div class="container stats-container">
-        <div class="row g-4">
-            <div class="col-md-3 col-6">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-user-graduate"></i></div>
-                    <div class="stat-number" id="stat-students">2,450+</div>
-                    <div class="stat-label">សិស្សានុសិស្សសរុប</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-                    <div class="stat-number" id="stat-teachers">64</div>
-                    <div class="stat-label">លោកគ្រូ អ្នកគ្រូ</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-school"></i></div>
-                    <div class="stat-number" id="stat-classrooms">8</div>
-                    <div class="stat-label">បន្ទប់សិក្សា & ពិសោធន៍</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-trophy"></i></div>
-                    <div class="stat-number" id="stat-passrate">89.5%</div>
-                    <div class="stat-label">អត្រាប្រឡងជាប់បាក់ឌុប</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 5. About School & Vision Mission Section -->
-    <section id="about" class="py-5 my-5">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6">
-                    <div class="position-relative">
-                        <img src="assets/images/banner/hero_bg.png" alt="Oudong Campus"
-                            class="img-fluid rounded-4 shadow-lg">
-                        <div class="position-absolute bottom-0 start-0 bg-success text-white p-4 rounded-4 m-3 d-none d-sm-block"
-                            style="background: linear-gradient(135deg, #064e3b 0%, #047857 100%) !important;">
-                            <h4 class="khmer-title fs-5 mb-1">បង្កើតឡើងនៅឆ្នាំ ១៩៧៨</h4>
-                            <p class="mb-0 small opacity-90">បម្រើការអប់រំ និងអភិវឌ្ឍន៍ធនធានមនុស្សជាង ៤៨ ឆ្នាំ</p>
+        <!-- 3. Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <div class="hero-badge">
+                            <i class="fa-solid fa-graduation-cap"></i> សាលារៀនគំរូ នៃតំបន់ប្រវត្តិសាស្ត្រឧដុង្គ
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <span class="section-badge">ចក្ខុវិស័យ និងបេសកកម្ម</span>
-                    <h2 class="section-title text-start mb-4">វិទ្យាល័យ ឧដុង្គ</h2>
-                    <p class="text-muted">
-                        វិទ្យាល័យឧដុង្គ ស្ថិតនៅក្នុងតំបន់ប្រវត្តិសាស្ត្រក្រុងឧដុង្គ ខេត្តកំពង់ស្ពឺ។
-                        យើងបានបំពេញបេសកកម្មយ៉ាងសកម្មក្នុងការអប់រំ បណ្តុះបណ្តាលសិស្សានុសិស្សប្រកបដោយគុណភាព សីលធម៌
-                        និងសមត្ថភាពបច្ចេកវិទ្យា ឆ្លើយតបតាមស្តង់ដាសាលារៀនគំរូរបស់ក្រសួងអប់រំ យុវជន និងកីឡា។
-                    </p>
-
-                    <div class="row g-3 mt-3">
-                        <div class="col-sm-6">
-                            <div class="p-3 border rounded-3 card-bg">
-                                <i class="fa-solid fa-eye text-success fs-3 mb-2"></i>
-                                <h4 class="khmer-title fs-6">ចក្ខុវិស័យ</h4>
-                                <p class="small text-muted mb-0">ក្លាយជាសាលារៀនគំរូផ្នែកបច្ចេកវិទ្យា វិទ្យាសាស្ត្រ
-                                    និងគុណធម៌ខ្ពស់។</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 border rounded-3 card-bg">
-                                <i class="fa-solid fa-bullseye text-warning fs-3 mb-2"></i>
-                                <h4 class="khmer-title fs-6">បេសកកម្ម</h4>
-                                <p class="small text-muted mb-0">ផ្តល់ការអប់រំប្រកបដោយសមធម៌ បរិយាបន្ន
-                                    និងការអភិវឌ្ឍបំណិនសតវត្សរ៍ទី២១។</p>
-                            </div>
+                        <h1 class="hero-title">ស្វាគមន៍មកកាន់ គេហទំព័រផ្លូវការ <br><span class="text-warning">វិទ្យាល័យ
+                                ឧដុង្គ</span></h1>
+                        <p class="hero-subtitle">
+                            យើងបណ្តុះបណ្តាលសិស្សានុសិស្សឲ្យប្រកបដោយ «ចំណេះដឹង សីលធម៌ គុណធម៌ និង បំណិនជីវិត»
+                            ដើម្បីក្លាយជាទំពាំងស្នងឫស្សីដ៏រឹងមាំសម្រាប់ប្រទេសជាតិ។
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#staff" class="btn btn-gold"><i class="fa-solid fa-users me-2"></i>
+                                រចនាសម្ព័ន្ធបុគ្គលិក</a>
+                            <a href="#activities" class="btn btn-outline-glass"><i
+                                    class="fa-solid fa-newspaper me-2"></i>
+                                សកម្មភាពសាលា</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 6. School Staff & Organization Chart Section -->
-    <section id="staff" class="py-5">
-        <div class="container">
-            <div class="section-title-wrap">
-                <span class="section-badge">រចនាសម្ព័ន្ធគ្រប់គ្រង</span>
-                <h2 class="section-title">រចនាសម្ព័នបុគ្គលិកសាលា</h2>
-                <div class="section-line"></div>
-                <p class="text-muted mt-2">គណៈគ្រប់គ្រង លោកគ្រូ អ្នកគ្រូ និងបុគ្គលិកអប់រំនៃវិទ្យាល័យឧដុង្គ</p>
-            </div>
-
-            <!-- Filter Buttons & Subject Dropdown -->
-            <div class="filter-tabs" id="staff-filters">
-                <button class="filter-btn active" data-filter="all">ទាំងអស់</button>
-                <button class="filter-btn" data-filter="management">គណៈគ្រប់គ្រង</button>
-                <button class="filter-btn" data-filter="stem">វិទ្យាសាស្ត្រពិត (STEM)</button>
-                <button class="filter-btn" data-filter="social">វិទ្យាសាស្ត្រសង្គម</button>
-                <button class="filter-btn" data-filter="admin">រដ្ឋបាល & បណ្ណាល័យ</button>
-
-                <!-- Subject Dropdown Filter -->
-                <div class="subject-select-wrap ms-lg-2">
-                    <i class="fa-solid fa-filter text-warning"></i>
-                    <label for="staff-subject-select">មុខវិជ្ជាបង្រៀន៖</label>
-                    <select id="staff-subject-select" class="subject-select">
-                        <option value="all">មុខវិជ្ជាទាំងអស់</option>
-                        <optgroup label="វិទ្យាសាស្ត្រពិត (STEM)">
-                            <option value="math">គណិតវិទ្យា</option>
-                            <option value="physics">រូបវិទ្យា</option>
-                            <option value="chemistry">គីមីវិទ្យា</option>
-                            <option value="biology">ជីវវិទ្យា</option>
-                            <option value="ict">ព័ត៌មានវិទ្យា (ICT)</option>
-                            <option value="earth_science">ផែនដី និង បរិស្ថានវិទ្យា</option>
-                        </optgroup>
-                        <optgroup label="វិទ្យាសាស្ត្រសង្គម">
-                            <option value="khmer">អក្សរសាស្ត្រខ្មែរ</option>
-                            <option value="history">ប្រវត្តិវិទ្យា</option>
-                            <option value="geography">ភូមិវិទ្យា</option>
-                            <option value="english">ភាសាអង់គ្លេស</option>
-                            <option value="foreign_lang">ភាសាបរទេស</option>
-                            <option value="civics">សីលធម៌-ពលរដ្ឋ</option>
-                            <option value="pe">អប់រំកាយ និង កីឡា</option>
-                        </optgroup>
-                        <optgroup label="រដ្ឋបាល និង ផ្សេងៗ">
-                            <option value="admin">រដ្ឋបាល</option>
-                            <option value="finance">គណនេយ្យ និង ហិរញ្ញវត្ថុ</option>
-                            <option value="economics">សេដ្ឋកិច្ច</option>
-                            <option value="librarian">បណ្ណារក្ស</option>
-                            <option value="management">គ្រប់គ្រង</option>
-                            <option value="general">គ្រូបង្រៀនទូទៅ</option>
-                        </optgroup>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Staff Grid Container -->
-            <div class="row" id="staff-grid">
-                <!-- Dynamically rendered via js/main.js -->
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. School Activities & News Section -->
-    <section id="activities" class="py-5">
-        <div class="container">
-            <div class="section-title-wrap">
-                <span class="section-badge">ព្រឹត្តិការណ៍ & ព័ត៌មាន</span>
-                <h2 class="section-title">ព័ត៌មានផ្សេងៗអំពីសកម្មភាពសាលា</h2>
-                <div class="section-line"></div>
-                <p class="text-muted mt-2">តាមដានសកម្មភាពសិក្សា ការប្រកួតប្រជែង STEM កីឡា និងយុទ្ធនាការសង្គម</p>
-            </div>
-
-            <!-- Activities Filter Buttons -->
-            <div class="filter-tabs" id="activity-filters">
-                <button class="filter-btn active" data-filter="all">ទាំងអស់</button>
-                <button class="filter-btn" data-filter="stem">STEM & វិទ្យាសាស្ត្រ</button>
-                <button class="filter-btn" data-filter="sports">កីឡា</button>
-                <button class="filter-btn" data-filter="community">យុវជន & បរិស្ថាន</button>
-                <button class="filter-btn" data-filter="exam">ថ្នាក់បំប៉នប្រឡង</button>
-            </div>
-
-            <!-- Activities Grid Container -->
-            <div class="row" id="activities-grid">
-                <!-- Dynamically rendered via js/main.js -->
-            </div>
-        </div>
-    </section>
-
-    <!-- 8. Knowledge Section -->
-    <section id="knowledge" class="py-5">
-        <div class="container">
-            <div class="section-title-wrap">
-                <span class="section-badge">មេរៀន & គន្លឹះសិក្សា</span>
-                <h2 class="section-title">ចំណេះដឹងថ្មីៗ សម្រាប់សិស្សានុសិស្ស</h2>
-                <div class="section-line"></div>
-                <p class="text-muted mt-2">អត្ថបទអប់រំ គន្លឹះប្រឡងបាក់ឌុប និងឯកសារស្វ័យសិក្សាទាញយកដោយឥតគិតថ្លៃ</p>
-            </div>
-
-            <!-- Knowledge Grid Container -->
-            <div class="row" id="knowledge-grid">
-                <!-- Dynamically rendered via js/main.js -->
-            </div>
-        </div>
-    </section>
-
-    <!-- 9. School Standards & Internal Rules Section -->
-    <section id="standards" class="py-5">
-        <div class="container">
-            <div class="section-title-wrap">
-                <span class="section-badge">ស្តង់ដារគុណភាព & វិន័យ</span>
-                <h2 class="section-title">ស្តង់ដាសំខាន់ៗ និងបទបញ្ជាផ្ទៃក្នុង</h2>
-                <div class="section-line"></div>
-                <p class="text-muted mt-2">គោលការណ៍ណែនាំ ស្តង់ដាសាលារៀនគំរូ និងបទបញ្ជាផ្ទៃក្នុងសម្រាប់លោកគ្រូអ្នកគ្រូ
-                    និងសិស្ស</p>
-            </div>
-
-            <!-- Standards Grid Container -->
-            <div class="row" id="standards-grid">
-                <!-- Dynamically rendered via js/main.js -->
-            </div>
-        </div>
-    </section>
-
-    <!-- 10. Contact & Map Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <div class="section-title-wrap">
-                <span class="section-badge">ទាក់ទងយើង</span>
-                <h2 class="section-title">ព័ត៌មានទំនាក់ទំនង & ទីតាំងសាលា</h2>
-                <div class="section-line"></div>
-            </div>
-
+        <!-- 4. Quick Statistics Counters -->
+        <div class="container stats-container">
             <div class="row g-4">
-                <div class="col-lg-5">
-                    <div class="p-4 rounded-4 shadow-sm h-100 card-bg border">
-                        <h4 class="khmer-title fs-5 mb-4 text-success">អាសយដ្ឋាន & ម៉ោងធ្វើការ</h4>
-
-                        <div class="d-flex gap-3 mb-4">
-                            <div class="fs-4 text-warning"><i class="fa-solid fa-location-dot"></i></div>
-                            <div>
-                                <h6 class="fw-bold mb-1">ទីតាំងវិទ្យាល័យ</h6>
-                                <p class="text-muted small mb-0">ផ្លូវជាតិលេខ ៥, ក្រុងឧដុង្គម៉ែជ័យ, ខេត្តកំពង់ស្ពឺ
-                                    (ជិតភ្នំឧដុង្គ)</p>
-                            </div>
-                        </div>
-
-                        <div class="d-flex gap-3 mb-4">
-                            <div class="fs-4 text-success"><i class="fa-solid fa-phone"></i></div>
-                            <div>
-                                <h6 class="fw-bold mb-1">លេខទូរស័ព្ទទំនាក់ទំនង</h6>
-                                <p class="text-muted small mb-0">012 345 678 / 097 888 999</p>
-                            </div>
-                        </div>
-
-                        <div class="d-flex gap-3 mb-4">
-                            <div class="fs-4 text-info"><i class="fa-solid fa-clock"></i></div>
-                            <div>
-                                <h6 class="fw-bold mb-1">ម៉ោងសិក្សា & រដ្ឋបាល</h6>
-                                <p class="text-muted small mb-0">ច័ន្ទ - សៅរ៍ ៖ 7:00 AM - 11:30 AM | 1:00 PM - 5:00 PM
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="border-top pt-4 mt-2">
-                            <h6 class="fw-bold mb-3">បណ្តាញសង្គមផ្លូវការ</h6>
-                            <div class="d-flex gap-2">
-                                <a href="https://facebook.com" class="btn btn-outline-primary rounded-circle"
-                                    style="width:40px; height:40px;" target="_blank"><i
-                                        class="fa-brands fa-facebook-f"></i></a>
-                                <a href="https://telegram.org" class="btn btn-outline-info rounded-circle"
-                                    style="width:40px; height:40px;" target="_blank"><i
-                                        class="fa-brands fa-telegram"></i></a>
-                                <a href="mailto:info@oudonghighschool.edu.kh"
-                                    class="btn btn-outline-danger rounded-circle" style="width:40px; height:40px;"><i
-                                        class="fa-solid fa-envelope"></i></a>
-                            </div>
-                        </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-user-graduate"></i></div>
+                        <div class="stat-number" id="stat-students">2,450+</div>
+                        <div class="stat-label">សិស្សានុសិស្សសរុប</div>
                     </div>
                 </div>
-
-                <div class="col-lg-7">
-                    <div class="p-4 rounded-4 shadow-sm h-100 card-bg border">
-                        <h4 class="khmer-title fs-5 mb-4 text-success">ផ្ញើសារសាកសួរព័ត៌មាន</h4>
-                        <form
-                            onsubmit="event.preventDefault(); alert('សាររបស់លោកអ្នកត្រូវបានផ្ញើរួចរាល់! ក្រុមការងាររដ្ឋបាលនឹងទាក់ទងត្រឡប់ទៅវិញ។');">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label small fw-bold">ឈ្មោះពេញ</label>
-                                    <input type="text" class="form-control rounded-3" placeholder="ឧទាហរណ៍៖ សុខ ជា"
-                                        required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label small fw-bold">លេខទូរស័ព្ទ / អ៊ីមែល</label>
-                                    <input type="text" class="form-control rounded-3" placeholder="012 xxx xxx"
-                                        required>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label small fw-bold">ប្រធានបទ</label>
-                                    <select class="form-select rounded-3">
-                                        <option>សាកសួរការចុះឈ្មោះចូលរៀន</option>
-                                        <option>ព័ត៌មានអាហារូបករណ៍</option>
-                                        <option>ទំនាក់ទំនងអាណាព្យាបាលសិស្ស</option>
-                                        <option>ផ្សេងៗ</option>
-                                    </select>
-                                </div>
-                                <div class="col-12">
-                                    <label class="form-label small fw-bold">ខ្លឹមសារសារ</label>
-                                    <textarea class="form-control rounded-3" rows="4"
-                                        placeholder="សរសេរសាររបស់អ្នកនៅទីនេះ..." required></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-gold rounded-pill w-100">
-                                        <i class="fa-solid fa-paper-plane me-2"></i> ផ្ញើសារទំនាក់ទំនង
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                        <div class="stat-number" id="stat-teachers">64</div>
+                        <div class="stat-label">លោកគ្រូ អ្នកគ្រូ</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-school"></i></div>
+                        <div class="stat-number" id="stat-classrooms">8</div>
+                        <div class="stat-label">បន្ទប់សិក្សា & ពិសោធន៍</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-trophy"></i></div>
+                        <div class="stat-number" id="stat-passrate">89.5%</div>
+                        <div class="stat-label">អត្រាប្រឡងជាប់បាក់ឌុប</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- 5. About School & Vision Mission Section -->
+        <section id="about" class="py-5 my-5">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <div class="position-relative">
+                            <img src="assets/images/banner/hero_bg.png" alt="Oudong Campus"
+                                class="img-fluid rounded-4 shadow-lg">
+                            <div class="position-absolute bottom-0 start-0 bg-success text-white p-4 rounded-4 m-3 d-none d-sm-block"
+                                style="background: linear-gradient(135deg, #064e3b 0%, #047857 100%) !important;">
+                                <h4 class="khmer-title fs-5 mb-1">បង្កើតឡើងនៅឆ្នាំ ១៩៧៨</h4>
+                                <p class="mb-0 small opacity-90">បម្រើការអប់រំ និងអភិវឌ្ឍន៍ធនធានមនុស្សជាង ៤៨ ឆ្នាំ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="section-badge">ចក្ខុវិស័យ និងបេសកកម្ម</span>
+                        <h2 class="section-title text-start mb-4">វិទ្យាល័យ ឧដុង្គ</h2>
+                        <p class="text-muted">
+                            វិទ្យាល័យឧដុង្គ ស្ថិតនៅក្នុងតំបន់ប្រវត្តិសាស្ត្រក្រុងឧដុង្គ ខេត្តកំពង់ស្ពឺ។
+                            យើងបានបំពេញបេសកកម្មយ៉ាងសកម្មក្នុងការអប់រំ បណ្តុះបណ្តាលសិស្សានុសិស្សប្រកបដោយគុណភាព សីលធម៌
+                            និងសមត្ថភាពបច្ចេកវិទ្យា ឆ្លើយតបតាមស្តង់ដាសាលារៀនគំរូរបស់ក្រសួងអប់រំ យុវជន និងកីឡា។
+                        </p>
+
+                        <div class="row g-3 mt-3">
+                            <div class="col-sm-6">
+                                <div class="p-3 border rounded-3 card-bg">
+                                    <i class="fa-solid fa-eye text-success fs-3 mb-2"></i>
+                                    <h4 class="khmer-title fs-6">ចក្ខុវិស័យ</h4>
+                                    <p class="small text-muted mb-0">ក្លាយជាសាលារៀនគំរូផ្នែកបច្ចេកវិទ្យា វិទ្យាសាស្ត្រ
+                                        និងគុណធម៌ខ្ពស់។</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="p-3 border rounded-3 card-bg">
+                                    <i class="fa-solid fa-bullseye text-warning fs-3 mb-2"></i>
+                                    <h4 class="khmer-title fs-6">បេសកកម្ម</h4>
+                                    <p class="small text-muted mb-0">ផ្តល់ការអប់រំប្រកបដោយសមធម៌ បរិយាបន្ន
+                                        និងការអភិវឌ្ឍបំណិនសតវត្សរ៍ទី២១។</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. School Staff & Organization Chart Section -->
+        <section id="staff" class="py-5">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-badge">រចនាសម្ព័ន្ធគ្រប់គ្រង</span>
+                    <h2 class="section-title">រចនាសម្ព័នបុគ្គលិកសាលា</h2>
+                    <div class="section-line"></div>
+                    <p class="text-muted mt-2">គណៈគ្រប់គ្រង លោកគ្រូ អ្នកគ្រូ និងបុគ្គលិកអប់រំនៃវិទ្យាល័យឧដុង្គ</p>
+                    <div class="admin-control-bar mt-3 d-none">
+                        <button class="btn btn-gold btn-sm rounded-pill px-4 shadow-sm" data-bs-toggle="modal"
+                            data-bs-target="#addStaffModal" onclick="prepareAddStaffModal()">
+                            <i class="fa-solid fa-plus-circle me-1"></i> បន្ថែមបុគ្គលិក/លោកគ្រូអ្នកគ្រូថ្មី
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filter Buttons & Subject Dropdown -->
+                <div class="filter-tabs" id="staff-filters">
+                    <button class="filter-btn active" data-filter="all">ទាំងអស់</button>
+                    <button class="filter-btn" data-filter="management">គណៈគ្រប់គ្រង</button>
+                    <button class="filter-btn" data-filter="stem">វិទ្យាសាស្ត្រពិត (STEM)</button>
+                    <button class="filter-btn" data-filter="social">វិទ្យាសាស្ត្រសង្គម</button>
+                    <button class="filter-btn" data-filter="admin">រដ្ឋបាល & បណ្ណាល័យ</button>
+
+                    <!-- Subject Dropdown Filter -->
+                    <div class="subject-select-wrap ms-lg-2">
+                        <i class="fa-solid fa-filter text-warning"></i>
+                        <label for="staff-subject-select">មុខវិជ្ជាបង្រៀន៖</label>
+                        <select id="staff-subject-select" class="subject-select">
+                            <option value="all">មុខវិជ្ជាទាំងអស់</option>
+                            <optgroup label="វិទ្យាសាស្ត្រពិត (STEM)">
+                                <option value="math">គណិតវិទ្យា</option>
+                                <option value="physics">រូបវិទ្យា</option>
+                                <option value="chemistry">គីមីវិទ្យា</option>
+                                <option value="biology">ជីវវិទ្យា</option>
+                                <option value="ict">ព័ត៌មានវិទ្យា (ICT)</option>
+                                <option value="earth_science">ផែនដី និង បរិស្ថានវិទ្យា</option>
+                            </optgroup>
+                            <optgroup label="វិទ្យាសាស្ត្រសង្គម">
+                                <option value="khmer">អក្សរសាស្ត្រខ្មែរ</option>
+                                <option value="history">ប្រវត្តិវិទ្យា</option>
+                                <option value="geography">ភូមិវិទ្យា</option>
+                                <option value="english">ភាសាអង់គ្លេស</option>
+                                <option value="foreign_lang">ភាសាបរទេស</option>
+                                <option value="civics">សីលធម៌-ពលរដ្ឋ</option>
+                                <option value="pe">អប់រំកាយ និង កីឡា</option>
+                            </optgroup>
+                            <optgroup label="រដ្ឋបាល និង ផ្សេងៗ">
+                                <option value="admin">រដ្ឋបាល</option>
+                                <option value="finance">គណនេយ្យ និង ហិរញ្ញវត្ថុ</option>
+                                <option value="economics">សេដ្ឋកិច្ច</option>
+                                <option value="librarian">បណ្ណារក្ស</option>
+                                <option value="management">គ្រប់គ្រង</option>
+                                <option value="general">គ្រូបង្រៀនទូទៅ</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Staff Grid Container -->
+                <div class="row" id="staff-grid">
+                    <!-- Dynamically rendered via js/main.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. School Activities & News Section -->
+        <section id="activities" class="py-5">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-badge">ព្រឹត្តិការណ៍ & ព័ត៌មាន</span>
+                    <h2 class="section-title">ព័ត៌មានផ្សេងៗអំពីសកម្មភាពសាលា</h2>
+                    <div class="section-line"></div>
+                    <p class="text-muted mt-2">តាមដានសកម្មភាពសិក្សា ការប្រកួតប្រជែង STEM កីឡា និងយុទ្ធនាការសង្គម</p>
+                    <div class="admin-control-bar mt-3 d-none">
+                        <button class="btn btn-gold btn-sm rounded-pill px-4 shadow-sm" data-bs-toggle="modal"
+                            data-bs-target="#addActivityModal">
+                            <i class="fa-solid fa-plus-circle me-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Activities Filter Buttons -->
+                <div class="filter-tabs" id="activity-filters">
+                    <button class="filter-btn active" data-filter="all">ទាំងអស់</button>
+                    <button class="filter-btn" data-filter="stem">STEM & វិទ្យាសាស្ត្រ</button>
+                    <button class="filter-btn" data-filter="sports">កីឡា</button>
+                    <button class="filter-btn" data-filter="community">យុវជន & បរិស្ថាន</button>
+                    <button class="filter-btn" data-filter="exam">ថ្នាក់បំប៉នប្រឡង</button>
+                </div>
+
+                <!-- Activities Grid Container -->
+                <div class="row" id="activities-grid">
+                    <!-- Dynamically rendered via js/main.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Knowledge Section -->
+        <section id="knowledge" class="py-5">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-badge">មេរៀន & គន្លឹះសិក្សា</span>
+                    <h2 class="section-title">ចំណេះដឹងថ្មីៗ សម្រាប់សិស្សានុសិស្ស</h2>
+                    <div class="section-line"></div>
+                    <p class="text-muted mt-2">អត្ថបទអប់រំ គន្លឹះប្រឡងបាក់ឌុប និងឯកសារស្វ័យសិក្សាទាញយកដោយឥតគិតថ្លៃ</p>
+                    <div class="admin-control-bar mt-3 d-none">
+                        <button class="btn btn-gold btn-sm rounded-pill px-4 shadow-sm" data-bs-toggle="modal"
+                            data-bs-target="#addKnowledgeModal">
+                            <i class="fa-solid fa-plus-circle me-1"></i> បន្ថែមអត្ថបទចំណេះដឹងថ្មី
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Knowledge Grid Container -->
+                <div class="row" id="knowledge-grid">
+                    <!-- Dynamically rendered via js/main.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. School Standards & Internal Rules Section -->
+        <section id="standards" class="py-5">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-badge">ស្តង់ដារគុណភាព & វិន័យ</span>
+                    <h2 class="section-title">ស្តង់ដាសំខាន់ៗ និងបទបញ្ជាផ្ទៃក្នុង</h2>
+                    <div class="section-line"></div>
+                    <p class="text-muted mt-2">គោលការណ៍ណែនាំ ស្តង់ដាសាលារៀនគំរូ
+                        និងបទបញ្ជាផ្ទៃក្នុងសម្រាប់លោកគ្រូអ្នកគ្រូ
+                        និងសិស្ស</p>
+                    <div class="admin-control-bar mt-3 d-none">
+                        <button class="btn btn-gold btn-sm rounded-pill px-4 shadow-sm" data-bs-toggle="modal"
+                            data-bs-target="#addStandardModal">
+                            <i class="fa-solid fa-plus-circle me-1"></i> បន្ថែមស្តង់ដា/បទបញ្ជាថ្មី
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Standards Grid Container -->
+                <div class="row" id="standards-grid">
+                    <!-- Dynamically rendered via js/main.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. Contact & Map Section -->
+        <section id="contact" class="py-5">
+            <div class="container">
+                <div class="section-title-wrap">
+                    <span class="section-badge">ទាក់ទងយើង</span>
+                    <h2 class="section-title">ព័ត៌មានទំនាក់ទំនង & ទីតាំងសាលា</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-5">
+                        <div class="p-4 rounded-4 shadow-sm h-100 card-bg border">
+                            <h4 class="khmer-title fs-5 mb-4 text-success">អាសយដ្ឋាន & ម៉ោងធ្វើការ</h4>
+
+                            <div class="d-flex gap-3 mb-4">
+                                <div class="fs-4 text-warning"><i class="fa-solid fa-location-dot"></i></div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">ទីតាំងវិទ្យាល័យ</h6>
+                                    <p class="text-muted small mb-0">ផ្លូវជាតិលេខ ៥, ក្រុងឧដុង្គម៉ែជ័យ, ខេត្តកំពង់ស្ពឺ
+                                        (ជិតភ្នំឧដុង្គ)</p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-3 mb-4">
+                                <div class="fs-4 text-success"><i class="fa-solid fa-phone"></i></div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">លេខទូរស័ព្ទទំនាក់ទំនង</h6>
+                                    <p class="text-muted small mb-0">012 345 678 / 097 888 999</p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-3 mb-4">
+                                <div class="fs-4 text-info"><i class="fa-solid fa-clock"></i></div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">ម៉ោងសិក្សា & រដ្ឋបាល</h6>
+                                    <p class="text-muted small mb-0">ច័ន្ទ - សៅរ៍ ៖ 7:00 AM - 11:30 AM | 1:00 PM - 5:00
+                                        PM
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="border-top pt-4 mt-2">
+                                <h6 class="fw-bold mb-3">បណ្តាញសង្គមផ្លូវការ</h6>
+                                <div class="d-flex gap-2">
+                                    <a href="https://facebook.com" class="btn btn-outline-primary rounded-circle"
+                                        style="width:40px; height:40px;" target="_blank"><i
+                                            class="fa-brands fa-facebook-f"></i></a>
+                                    <a href="https://telegram.org" class="btn btn-outline-info rounded-circle"
+                                        style="width:40px; height:40px;" target="_blank"><i
+                                            class="fa-brands fa-telegram"></i></a>
+                                    <a href="mailto:info@oudonghighschool.edu.kh"
+                                        class="btn btn-outline-danger rounded-circle"
+                                        style="width:40px; height:40px;"><i class="fa-solid fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="p-4 rounded-4 shadow-sm h-100 card-bg border">
+                            <h4 class="khmer-title fs-5 mb-4 text-success">ផ្ញើសារសាកសួរព័ត៌មាន</h4>
+                            <form
+                                onsubmit="event.preventDefault(); alert('សាររបស់លោកអ្នកត្រូវបានផ្ញើរួចរាល់! ក្រុមការងាររដ្ឋបាលនឹងទាក់ទងត្រឡប់ទៅវិញ។'); this.reset();">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="contactName" class="form-label small fw-bold">ឈ្មោះពេញ</label>
+                                        <input type="text" id="contactName" class="form-control rounded-3"
+                                            placeholder="ឧទាហរណ៍៖ សុខ ជា" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="contactContact" class="form-label small fw-bold">លេខទូរស័ព្ទ /
+                                            អ៊ីមែល</label>
+                                        <input type="text" id="contactContact" class="form-control rounded-3"
+                                            placeholder="012 xxx xxx" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="contactSubject" class="form-label small fw-bold">ប្រធានបទ</label>
+                                        <select id="contactSubject" class="form-select rounded-3">
+                                            <option>សាកសួរការចុះឈ្មោះចូលរៀន</option>
+                                            <option>ព័ត៌មានអាហារូបករណ៍</option>
+                                            <option>ទំនាក់ទំនងអាណាព្យាបាលសិស្ស</option>
+                                            <option>ផ្សេងៗ</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="contactMessage" class="form-label small fw-bold">ខ្លឹមសារសារ</label>
+                                        <textarea id="contactMessage" class="form-control rounded-3" rows="4"
+                                            placeholder="សរសេរសាររបស់អ្នកនៅទីនេះ..." required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-gold rounded-pill w-100">
+                                            <i class="fa-solid fa-paper-plane me-2"></i> ផ្ញើសារទំនាក់ទំនង
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -510,6 +550,556 @@
             </div>
         </div>
     </div>
+
+    <!-- ADMIN MODAL 1: Add Activity / News -->
+    <div class="modal fade" id="addActivityModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title khmer-title fs-6 m-0"><i class="fa-solid fa-plus-circle me-2"></i>
+                        បន្ថែមសកម្មភាព / ព័ត៌មានសាលាថ្មី</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="addActivityForm">
+                    <div class="modal-body p-4">
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label for="actTitle" class="form-label small fw-bold">ចំណងជើងសកម្មភាព / ព័ត៌មាន</label>
+                                <input type="text" id="actTitle" class="form-control rounded-3"
+                                    placeholder="ឧទាហរណ៍៖ ពិព័រណ៍វិទ្យាសាស្ត្រ STEM..." required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="actCategory" class="form-label small fw-bold">ប្រភេទ</label>
+                                <select id="actCategory" class="form-select rounded-3" required>
+                                    <option value="stem">STEM & វិទ្យាសាស្ត្រ</option>
+                                    <option value="sports">កីឡា</option>
+                                    <option value="community">យុវជន & បរិស្ថាន</option>
+                                    <option value="exam">ថ្នាក់បំប៉នប្រឡង</option>
+                                    <option value="news">ព័ត៌មានទូទៅ</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="actDate" class="form-label small fw-bold">កាលបរិច្ឆេទ</label>
+                                <input type="text" id="actDate" class="form-control rounded-3"
+                                    placeholder="ឧទាហរណ៍៖ ០២ អូហ្គូស ២០២៦" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="actAuthor" class="form-label small fw-bold">អ្នកសរសេរ / ប្រភព</label>
+                                <input type="text" id="actAuthor" class="form-control rounded-3"
+                                    placeholder="ឧទាហរណ៍៖ គណៈគ្រប់គ្រងសាលា" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="actImage" class="form-label small fw-bold">ជ្រើសរើសរូបភាព (Browse ពីម៉ាស៊ីន
+                                    ឬ ជ្រើសពី Folder Assets)</label>
+                                <div class="input-group mb-2">
+                                    <input type="file" id="actFilePicker" class="d-none" accept="image/*">
+                                    <button type="button" class="btn btn-outline-success rounded-start-3"
+                                        onclick="document.getElementById('actFilePicker').click()">
+                                        <i class="fa-solid fa-folder-open me-1"></i> Browse រកមើលរូបភាព...
+                                    </button>
+                                    <select id="actImageSelect" class="form-select"
+                                        onchange="updateImagePreview('actImage', 'actPreview', this.value);">
+                                        <option value="assets/images/activities/04-08-26.jpg">
+                                            assets/images/activities/04-08-26.jpg (ពិព័រណ៍)</option>
+                                        <option value="assets/images/activities/stem_fair.png">
+                                            assets/images/activities/stem_fair.png (STEM)</option>
+                                        <option value="assets/images/activities/sports_day.png">
+                                            assets/images/activities/sports_day.png (កីឡា)</option>
+                                        <option value="assets/images/knowledge/digital_learning.png">
+                                            assets/images/knowledge/digital_learning.png (បច្ចេកវិទ្យា)</option>
+                                        <option value="assets/images/banner/hero_bg.png">
+                                            assets/images/banner/hero_bg.png (សាលារៀន)</option>
+                                    </select>
+                                </div>
+                                <input type="text" id="actImage" class="form-control rounded-3 mb-2"
+                                    value="assets/images/activities/stem_fair.png" placeholder="Path រូបភាព ឬ Data URL"
+                                    oninput="updateImagePreview('actImage', 'actPreview', this.value);" required>
+                                <div class="p-2 border rounded-3 text-center card-bg" id="actPreviewWrap">
+                                    <small class="text-muted d-block mb-1">រូបភាពគំរូ (Preview)៖</small>
+                                    <img id="actPreview" src="assets/images/activities/stem_fair.png" alt="Preview"
+                                        style="max-height: 120px; object-fit: contain;" class="rounded shadow-sm">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="actSummary" class="form-label small fw-bold">សង្ខេបខ្លី</label>
+                                <textarea id="actSummary" class="form-control rounded-3" rows="2"
+                                    placeholder="សរសេរការសង្ខេបខ្លី..." required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="actContent" class="form-label small fw-bold">ខ្លឹមសារព័ត៌មានលម្អិត</label>
+                                <textarea id="actContent" class="form-control rounded-3" rows="4"
+                                    placeholder="សរសេរខ្លឹមសារពេញ..." required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-light rounded-bottom-4">
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill"
+                            data-bs-dismiss="modal">បោះបង់</button>
+                        <button type="submit" class="btn btn-sm btn-gold rounded-pill px-4"><i
+                                class="fa-solid fa-save me-1"></i> រក្សាទុកព័ត៌មាន</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN MODAL 2: Add Knowledge Article -->
+    <div class="modal fade" id="addKnowledgeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title khmer-title fs-6 m-0"><i class="fa-solid fa-plus-circle me-2"></i>
+                        បន្ថែមអត្ថបទចំណេះដឹងថ្មី</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="addKnowledgeForm">
+                    <div class="modal-body p-4">
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label for="knowTitle" class="form-label small fw-bold">ចំណងជើងអត្ថបទ</label>
+                                <input type="text" id="knowTitle" class="form-control rounded-3"
+                                    placeholder="ឧទាហរណ៍៖ គន្លឹះត្រៀមប្រឡង..." required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="knowCategory" class="form-label small fw-bold">ប្រភេទ</label>
+                                <select id="knowCategory" class="form-select rounded-3" required>
+                                    <option value="exam_tips">គន្លឹះប្រឡង</option>
+                                    <option value="digital">ឌីជីថល & AI</option>
+                                    <option value="stem">រូបមន្ត STEM</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="knowDate" class="form-label small fw-bold">កាលបរិច្ឆេទ</label>
+                                <input type="text" id="knowDate" class="form-control rounded-3"
+                                    placeholder="ឧទាហរណ៍៖ ០២ អូហ្គូស ២០២៦" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="knowAuthor" class="form-label small fw-bold">អ្នកនិពន្ធ</label>
+                                <input type="text" id="knowAuthor" class="form-control rounded-3"
+                                    placeholder="ឧទាហរណ៍៖ លោកគ្រូ គឹម សុជាតិ" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="knowReadTime" class="form-label small fw-bold">រយៈពេលអាន</label>
+                                <input type="text" id="knowReadTime" class="form-control rounded-3"
+                                    placeholder="ឧទាហរណ៍៖ ៥ នាទី" value="៥ នាទី" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="knowImage" class="form-label small fw-bold">រូបភាពគម្រប (Browse ពីម៉ាស៊ីន ឬ
+                                    Assets Path)</label>
+                                <div class="input-group mb-2">
+                                    <input type="file" id="knowFilePicker" class="d-none" accept="image/*">
+                                    <button type="button" class="btn btn-outline-success rounded-start-3"
+                                        onclick="document.getElementById('knowFilePicker').click()">
+                                        <i class="fa-solid fa-folder-open me-1"></i> Browse...
+                                    </button>
+                                    <input type="text" id="knowImage" class="form-control"
+                                        value="assets/images/knowledge/digital_learning.png"
+                                        placeholder="assets/images/..."
+                                        oninput="updateImagePreview('knowImage', 'knowPreview', this.value);" required>
+                                </div>
+                                <div class="p-2 border rounded-3 text-center card-bg" id="knowPreviewWrap">
+                                    <img id="knowPreview" src="assets/images/knowledge/digital_learning.png"
+                                        alt="Preview" style="max-height: 90px; object-fit: contain;"
+                                        class="rounded shadow-sm">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="knowFile" class="form-label small fw-bold">ឯកសារទាញយក PDF (Browse PDF ឬ Docs
+                                    Path)</label>
+                                <div class="input-group mb-2">
+                                    <input type="file" id="knowPdfPicker" class="d-none" accept=".pdf">
+                                    <button type="button" class="btn btn-outline-danger rounded-start-3"
+                                        onclick="document.getElementById('knowPdfPicker').click()">
+                                        <i class="fa-solid fa-file-pdf me-1"></i> Browse PDF...
+                                    </button>
+                                    <input type="text" id="knowFile" class="form-control"
+                                        value="assets/docs/digital_learning_guide.pdf" required>
+                                </div>
+                                <select id="knowFileSelect" class="form-select rounded-3"
+                                    onchange="document.getElementById('knowFile').value=this.value;">
+                                    <option value="assets/docs/digital_learning_guide.pdf">digital_learning_guide.pdf
+                                    </option>
+                                    <option value="assets/docs/study_planner_template.pdf">study_planner_template.pdf
+                                    </option>
+                                    <option value="assets/docs/formulas_grade12.pdf">formulas_grade12.pdf</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="knowSummary" class="form-label small fw-bold">សង្ខេបខ្លី</label>
+                                <textarea id="knowSummary" class="form-control rounded-3" rows="2"
+                                    placeholder="សរសេរការសង្ខេបខ្លី..." required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="knowContent" class="form-label small fw-bold">ខ្លឹមសារអត្ថបទ</label>
+                                <textarea id="knowContent" class="form-control rounded-3" rows="3"
+                                    placeholder="សរសេរខ្លឹមសារពេញ..." required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-light rounded-bottom-4">
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill"
+                            data-bs-dismiss="modal">បោះបង់</button>
+                        <button type="submit" class="btn btn-sm btn-gold rounded-pill px-4"><i
+                                class="fa-solid fa-save me-1"></i> រក្សាទុកអត្ថបទ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN MODAL 3: Add Standard / Rule -->
+    <div class="modal fade" id="addStandardModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title khmer-title fs-6 m-0"><i class="fa-solid fa-plus-circle me-2"></i>
+                        បន្ថែមស្តង់ដារ ឬ បទបញ្ជាផ្ទៃក្នុងថ្មី</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="addStandardForm">
+                    <div class="modal-body p-4">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label for="stdCode" class="form-label small fw-bold">កូដស្តង់ដា (ID)</label>
+                                <input type="text" id="stdCode" class="form-control rounded-3" placeholder="STD-04"
+                                    value="STD-04" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="stdTitle" class="form-label small fw-bold">ឈ្មោះស្តង់ដារ / បទបញ្ជា</label>
+                                <input type="text" id="stdTitle" class="form-control rounded-3"
+                                    placeholder="ឧទាហរណ៍៖ ស្តង់ដាសុវត្ថិភាពសាលារៀន..." required>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="stdCategory" class="form-label small fw-bold">ប្រភេទ</label>
+                                <select id="stdCategory" class="form-select rounded-3" required>
+                                    <option value="standard">ស្តង់ដារសាលារៀន</option>
+                                    <option value="rules">បទបញ្ជាផ្ទៃក្នុង</option>
+                                    <option value="curriculum">ស្តង់ដារសិក្សា</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="stdIcon" class="form-label small fw-bold">Icon (FontAwesome)</label>
+                                <select id="stdIcon" class="form-select rounded-3" required>
+                                    <option value="fa-award">fa-award (ពានរង្វាន់/ស្តង់ដា)</option>
+                                    <option value="fa-gavel">fa-gavel (វិន័យ/បទបញ្ជា)</option>
+                                    <option value="fa-microchip">fa-microchip (បច្ចេកវិទ្យា)</option>
+                                    <option value="fa-book">fa-book (ការសិក្សា)</option>
+                                    <option value="fa-shield-halved">fa-shield-halved (សុវត្ថិភាព)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="stdFile" class="form-label small fw-bold">ឯកសារ PDF (Browse PDF ឬ Docs
+                                    Path)</label>
+                                <div class="input-group mb-2">
+                                    <input type="file" id="stdPdfPicker" class="d-none" accept=".pdf">
+                                    <button type="button" class="btn btn-outline-danger rounded-start-3"
+                                        onclick="document.getElementById('stdPdfPicker').click()">
+                                        <i class="fa-solid fa-file-pdf me-1"></i> Browse PDF...
+                                    </button>
+                                    <input type="text" id="stdFile" class="form-control"
+                                        value="assets/docs/model_school_standard.pdf" required>
+                                </div>
+                                <select id="stdFileSelect" class="form-select rounded-3"
+                                    onchange="document.getElementById('stdFile').value=this.value;">
+                                    <option value="assets/docs/model_school_standard.pdf">model_school_standard.pdf
+                                    </option>
+                                    <option value="assets/docs/school_rules.pdf">school_rules.pdf</option>
+                                    <option value="assets/docs/stem_standards.pdf">stem_standards.pdf</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="stdDescription" class="form-label small fw-bold">ការរៀបរាប់សង្ខេប</label>
+                                <textarea id="stdDescription" class="form-control rounded-3" rows="2"
+                                    placeholder="សរសេរការរៀបរាប់..." required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="stdHighlights" class="form-label small fw-bold">ចំណុចសំខាន់ៗ
+                                    (ចុះបន្ទាត់ដើម្បីបំបែកចំណុចនីមួយៗ)</label>
+                                <textarea id="stdHighlights" class="form-control rounded-3" rows="3"
+                                    placeholder="ចំណុចទី១&#10;ចំណុចទី២&#10;ចំណុចទី៣" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-light rounded-bottom-4">
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill"
+                            data-bs-dismiss="modal">បោះបង់</button>
+                        <button type="submit" class="btn btn-sm btn-gold rounded-pill px-4"><i
+                                class="fa-solid fa-save me-1"></i> រក្សាទុកស្តង់ដា</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN MODAL 4: Add / Edit Staff -->
+    <div class="modal fade" id="addStaffModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title khmer-title fs-6 m-0" id="staffModalTitle"><i class="fa-solid fa-user-plus me-2"></i>
+                        បន្ថែមបុគ្គលិក / លោកគ្រូអ្នកគ្រូថ្មី</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="addStaffForm">
+                    <div class="modal-body p-4">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="staffName" class="form-label small fw-bold">ឈ្មោះពេញ</label>
+                                <input type="text" id="staffName" class="form-control rounded-3" placeholder="ឧទាហរណ៍៖ លោក ឡៃ គួង" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="staffPosition" class="form-label small fw-bold">តួនាទី / មុខតំណែង</label>
+                                <input type="text" id="staffPosition" class="form-control rounded-3" placeholder="ឧទាហរណ៍៖ គ្រូបង្រៀន គណិតវិទ្យា" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="staffCategory" class="form-label small fw-bold">ផ្នែក (Category)</label>
+                                <select id="staffCategory" class="form-select rounded-3" required>
+                                    <option value="management">គណៈគ្រប់គ្រង</option>
+                                    <option value="stem">វិទ្យាសាស្ត្រពិត (STEM)</option>
+                                    <option value="social">វិទ្យាសាស្ត្រសង្គម</option>
+                                    <option value="admin">រដ្ឋបាល & បណ្ណាល័យ</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="staffSubject" class="form-label small fw-bold">មុខវិជ្ជាបង្រៀន</label>
+                                <select id="staffSubject" class="form-select rounded-3" required>
+                                    <option value="management">គ្រប់គ្រង</option>
+                                    <option value="math">គណិតវិទ្យា</option>
+                                    <option value="physics">រូបវិទ្យា</option>
+                                    <option value="chemistry">គីមីវិទ្យា</option>
+                                    <option value="biology">ជីវវិទ្យា</option>
+                                    <option value="ict">ព័ត៌មានវិទ្យា (ICT)</option>
+                                    <option value="earth_science">ផែនដី និង បរិស្ថានវិទ្យា</option>
+                                    <option value="khmer">អក្សរសាស្ត្រខ្មែរ</option>
+                                    <option value="history">ប្រវត្តិវិទ្យា</option>
+                                    <option value="geography">ភូមិវិទ្យា</option>
+                                    <option value="english">ភាសាអង់គ្លេស</option>
+                                    <option value="foreign_lang">ភាសាបរទេស</option>
+                                    <option value="civics">សីលធម៌-ពលរដ្ឋ</option>
+                                    <option value="pe">អប់រំកាយ និង កីឡា</option>
+                                    <option value="admin">រដ្ឋបាល</option>
+                                    <option value="finance">គណនេយ្យ</option>
+                                    <option value="librarian">បណ្ណារក្ស</option>
+                                    <option value="general">ទូទៅ</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="staffDegree" class="form-label small fw-bold">កម្រិតវប្បធម៌</label>
+                                <input type="text" id="staffDegree" class="form-control rounded-3" placeholder="ឧទាហរណ៍៖ បរិញ្ញាបត្រ គណិតវិទ្យា" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="staffExperience" class="form-label small fw-bold">បទពិសោធន៍</label>
+                                <input type="text" id="staffExperience" class="form-control rounded-3" placeholder="ឧទាហរណ៍៖ ៨ ឆ្នាំ" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="staffPhone" class="form-label small fw-bold">លេខទូរស័ព្ទ</label>
+                                <input type="text" id="staffPhone" class="form-control rounded-3" placeholder="012 345 678" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="staffEmail" class="form-label small fw-bold">អ៊ីមែល</label>
+                                <input type="email" id="staffEmail" class="form-control rounded-3" placeholder="name@oudonghighschool.edu.kh" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="staffImage" class="form-label small fw-bold">រូបថត (Browse ឬ Path/URL)</label>
+                                <div class="input-group mb-2">
+                                    <input type="file" id="staffFilePicker" class="d-none" accept="image/*">
+                                    <button type="button" class="btn btn-outline-success rounded-start-3"
+                                        onclick="document.getElementById('staffFilePicker').click()">
+                                        <i class="fa-solid fa-folder-open me-1"></i> Browse...
+                                    </button>
+                                    <input type="text" id="staffImage" class="form-control" value="assets/images/staff/principal.png"
+                                        oninput="updateImagePreview('staffImage', 'staffPreview', this.value);" required>
+                                </div>
+                                <div class="p-2 border rounded-3 text-center card-bg" id="staffPreviewWrap">
+                                    <img id="staffPreview" src="assets/images/staff/principal.png" alt="Preview"
+                                        style="max-height: 90px; object-fit: contain;" class="rounded shadow-sm">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="staffBio" class="form-label small fw-bold">ជីវប្រវត្តិ & ការងារ</label>
+                                <textarea id="staffBio" class="form-control rounded-3" rows="3" placeholder="ព័ត៌មានសង្ខេបអំពីការងារ..." required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-light rounded-bottom-4">
+                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-pill" data-bs-dismiss="modal">បោះបង់</button>
+                        <button type="submit" class="btn btn-sm btn-gold rounded-pill px-4">
+                            <i class="fa-solid fa-save me-1"></i> រក្សាទុកបុគ្គលិក
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN MODAL 5: Database Manager & Backup / Restore -->
+    <div class="modal fade" id="dbManagerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title khmer-title fs-6 m-0">
+                        <i class="fa-solid fa-database me-2"></i> ប្រព័ន្ធគ្រប់គ្រង Database & Backup
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="alert alert-info border-0 rounded-3 mb-3 small d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-shield-halved fs-4"></i>
+                        <div>
+                            <strong>ប្រព័ន្ធ Database ពីរជាន់ (Dual Persistent Storage)</strong><br>
+                            ទិន្នន័យត្រូវបានរក្សាទុកក្នុង <strong>IndexedDB Engine</strong> និង <strong>localStorage</strong> ក្នុង Browser ដោយស្វ័យប្រវត្តិ។
+                        </div>
+                    </div>
+
+                    <div class="card card-bg border rounded-3 p-3 mb-3">
+                        <h6 class="khmer-title fs-6 text-primary mb-2">
+                            <i class="fa-solid fa-server me-1"></i> ស្ថានភាព Database បច្ចុប្បន្ន
+                        </h6>
+                        <div class="row g-2 small">
+                            <div class="col-6">
+                                <div class="p-2 border rounded bg-body-tertiary">
+                                    <div class="text-muted">បុគ្គលិកសរុប</div>
+                                    <div class="fw-bold fs-6 text-success" id="dbStatStaff">--</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-2 border rounded bg-body-tertiary">
+                                    <div class="text-muted">សកម្មភាពសាលា</div>
+                                    <div class="fw-bold fs-6 text-warning" id="dbStatActivities">--</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-2 border rounded bg-body-tertiary">
+                                    <div class="text-muted">អត្ថបទចំណេះដឹង</div>
+                                    <div class="fw-bold fs-6 text-info" id="dbStatKnowledge">--</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="p-2 border rounded bg-body-tertiary">
+                                    <div class="text-muted">ស្តង់ដារសាលា</div>
+                                    <div class="fw-bold fs-6 text-primary" id="dbStatStandards">--</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-outline-success rounded-pill py-2" onclick="exportDatabaseBackup()">
+                            <i class="fa-solid fa-download me-1"></i> នាំចេញ Database Backup (.json)
+                        </button>
+                        
+                        <input type="file" id="dbImportFilePicker" class="d-none" accept=".json">
+                        <button type="button" class="btn btn-outline-primary rounded-pill py-2" onclick="document.getElementById('dbImportFilePicker').click()">
+                            <i class="fa-solid fa-upload me-1"></i> នាំចូល / ស្ដារ Database Backup (.json)
+                        </button>
+
+                        <button type="button" class="btn btn-outline-warning rounded-pill py-2" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+                            <i class="fa-solid fa-key me-1"></i> ប្តូរពាក្យសម្ងាត់ Admin (Change Password)
+                        </button>
+
+                        <button type="button" class="btn btn-outline-danger rounded-pill py-2 mt-1" onclick="resetSchoolDataToDefault()">
+                            <i class="fa-solid fa-rotate-left me-1"></i> កំណត់ទិន្នន័យទៅជាទិន្នន័យដើម (Reset DB)
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light rounded-bottom-4">
+                    <button type="button" class="btn btn-sm btn-secondary rounded-pill px-4" data-bs-dismiss="modal">បិទ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN MODAL 6: Admin Password Login Verification -->
+    <div class="modal fade" id="adminLoginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-warning-subtle text-dark border-0 py-3">
+                    <h5 class="modal-title khmer-title fs-6 m-0 text-dark">
+                        <i class="fa-solid fa-lock text-warning me-2 fs-5"></i> ផ្ទៀងផ្ទាត់ពាក្យសម្ងាត់ Admin
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="adminLoginForm">
+                    <div class="modal-body p-4 text-center">
+                        <div class="mb-3">
+                            <div class="avatar-icon bg-warning-subtle text-warning rounded-circle mx-auto mb-2 d-flex align-items-center justify-content-center" style="width: 56px; height: 56px;">
+                                <i class="fa-solid fa-user-shield fs-3"></i>
+                            </div>
+                            <p class="text-muted small mb-0">សូមបញ្ចូលពាក្យសម្ងាត់ដើម្បីបើកមុខងារ Admin</p>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="fa-solid fa-key text-muted"></i></span>
+                                <input type="password" id="adminPassInput" class="form-control border-start-0 border-end-0" placeholder="បញ្ចូល Password..." required>
+                                <button class="btn btn-light border border-start-0" type="button" id="togglePassVisibilityBtn">
+                                    <i class="fa-solid fa-eye text-muted" id="passEyeIcon"></i>
+                                </button>
+                            </div>
+                            <div class="text-danger small mt-2 d-none" id="adminLoginError">
+                                <i class="fa-solid fa-triangle-exclamation me-1"></i> ពាក្យសម្ងាត់មិនត្រឹមត្រូវទេ!
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-gold w-100 rounded-pill py-2 fw-bold shadow-sm">
+                            <i class="fa-solid fa-right-to-bracket me-1"></i> ចូលគណនី Admin
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN MODAL 7: Change Admin Password -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-primary text-white py-3">
+                    <h5 class="modal-title khmer-title fs-6 m-0">
+                        <i class="fa-solid fa-key me-2"></i> ប្តូរពាក្យសម្ងាត់ Admin
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="changePasswordForm">
+                    <div class="modal-body p-4">
+                        <div class="mb-3">
+                            <label for="oldPassInput" class="form-label small fw-bold">ពាក្យសម្ងាត់ចាស់</label>
+                            <input type="password" id="oldPassInput" class="form-control rounded-3" placeholder="បញ្ចូល Password ចាស់..." required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPassInput" class="form-label small fw-bold">ពាក្យសម្ងាត់ថ្មី</label>
+                            <input type="password" id="newPassInput" class="form-control rounded-3" placeholder="បញ្ចូល Password ថ្មី..." required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmNewPassInput" class="form-label small fw-bold">បញ្ជាក់ពាក្យសម្ងាត់ថ្មី</label>
+                            <input type="password" id="confirmNewPassInput" class="form-control rounded-3" placeholder="បញ្ចូល Password ថ្មីម្តងទៀត..." required>
+                        </div>
+                        <div class="text-danger small mb-3 d-none" id="changePassError"></div>
+                        <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-bold">
+                            <i class="fa-solid fa-save me-1"></i> រក្សាទុកពាក្យសម្ងាត់ថ្មី
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Toast Notification Banner -->
+    <div class="toast-container position-fixed bottom-0 start-0 p-3" style="z-index: 1100;">
+        <div id="adminToast" class="toast align-items-center text-white bg-success border-0 shadow-lg" role="alert"
+            aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body d-flex align-items-center gap-2" id="adminToastMsg">
+                    <i class="fa-solid fa-circle-check fs-5"></i> ទិន្នន័យត្រូវបានរក្សាទុកដោយជោគជ័យ!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Scroll-to-Top Button -->
+    <button id="scrollTopBtn" class="scroll-top-btn" aria-label="ទៅកាន់ផ្នែកខាងលើ" title="ទៅកាន់ផ្នែកខាងលើ">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <!-- Bootstrap 5.3 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

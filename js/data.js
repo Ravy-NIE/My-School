@@ -900,6 +900,18 @@ const SCHOOL_DATA = {
     // 2. ព័ត៌មាន និងសកម្មភាពសាលា (News & Activities)
     activities: [
         {
+            id: 70,
+            title: "ការតាំងពិព័រណ៌ស្នាដៃសិស្ស ឆ្នាំសិក្សា ២០២៥ ២០២៦",
+            category: "news",
+            date: "ថ្ងៃទី ០៤ ខែ សីហា ឆ្នាំ ២០២៦",
+            author: "ICT",
+            image: "assets/images/activities/04-08-26.jpg",
+            summary: "នៅក្នុងពិព័រណ៍ ឆ្នាំ២០២៦ នេះ សិស្សានុសិស្សថ្នាក់ទី១០ ដល់ទី១២ បានបង្ហាញស្នាដៃប្រឌិតបង្កើតថ្មីជាច្រើន",
+            content: "នៅក្នុងពិព័រណ៍ ឆ្នាំ២០២៦ នេះ សិស្សានុសិស្សថ្នាក់ទី១០ ដល់ទី១២ បានបង្ហាញស្នាដៃប្រឌិតបង្កើតថ្មីជាច្រើន ដូចជា ប្រព័ន្ធស្រោចស្រពដំណាំស្វ័យប្រវត្តិ រ៉ូបូត និងគម្រោងបច្ចេកវិទ្យាជាច្រើនទៀត។",
+            views: 520,
+            featured: true
+        },
+        {
             id: 63,
             title: "ពិព័រណ៍វិទ្យាសាស្ត្រ និងបច្ចេកវិទ្យា STEM ឆ្នាំ២០២៦",
             category: "stem",
@@ -986,6 +998,18 @@ const SCHOOL_DATA = {
             summary: "សង្ខេបសន្លឹកកិច្ចការរូបមន្តសំខាន់ៗ និងវិធីសាស្ត្រគណនាលឿន និងត្រឹមត្រូវ...",
             content: "ចងក្រងរូបមន្តសំខាន់ៗលើមុខវិជ្ជារូបវិទ្យា និងគណិតវិទ្យា សម្រាប់សិស្សស្វ័យសិក្សា និងដោះស្រាយលំហាត់គំរូ step-by-step។",
             downloadFile: "assets/docs/formulas_grade12.pdf"
+        },
+        {
+            id: 71,
+            title: "ការតាំងពិព័រណ៌ស្នាដៃសិស្ស ឆ្នាំ២០២៦",
+            category: "science",
+            date: "០៤ សីហា ២០២៦",
+            author: "ICT",
+            image: "assets/images/activities/04-08-26.jpg",
+            readTime: "១០ នាទី",
+            summary: "ការតាំងពិព័រណ៌ស្នាដៃសិស្ស ឆ្នាំ២០២៦។",
+            content: "នៅក្នុងពិព័រណ៍ ឆ្នាំ២០២៦ នេះ សិស្សានុសិស្សថ្នាក់ទី១០ ដល់ទី១២ បានបង្ហាញស្នាដៃប្រឌិតបង្កើតថ្មីជាច្រើន។",
+            downloadFile: "assets/docs/formulas_grade12.pdf"
         }
     ],
 
@@ -1043,3 +1067,222 @@ const SCHOOL_DATA = {
         "assets/images/slide/slide3.png"
     ]
 };
+
+// ==========================================
+// INDEXEDDB & LOCAL STORAGE DATABASE SYSTEM
+// ==========================================
+
+const DB_NAME = 'OudongHighSchoolDB';
+const DB_VERSION = 1;
+let dbInstance = null;
+
+// Initialize IndexedDB Database Engine
+function initIndexedDB() {
+    return new Promise((resolve, reject) => {
+        if (!window.indexedDB) {
+            console.warn("IndexedDB is not supported in this browser. Falling back to localStorage.");
+            return resolve(null);
+        }
+
+        const request = window.indexedDB.open(DB_NAME, DB_VERSION);
+
+        request.onerror = (event) => {
+            console.error("IndexedDB initialization error:", event.target.error);
+            resolve(null);
+        };
+
+        request.onsuccess = (event) => {
+            dbInstance = event.target.result;
+            console.log("IndexedDB database connected successfully.");
+            syncIndexedDBWithSchoolData();
+            resolve(dbInstance);
+        };
+
+        request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            const collections = ['activities', 'knowledge', 'standards', 'staff'];
+            collections.forEach(storeName => {
+                if (!db.objectStoreNames.contains(storeName)) {
+                    db.createObjectStore(storeName, { keyPath: 'id' });
+                }
+            });
+        };
+    });
+}
+
+// Sync all collections into IndexedDB
+function syncIndexedDBWithSchoolData() {
+    if (!dbInstance) return;
+    try {
+        const collections = ['activities', 'knowledge', 'standards', 'staff'];
+        const tx = dbInstance.transaction(collections, 'readwrite');
+        collections.forEach(name => {
+            const store = tx.objectStore(name);
+            store.clear();
+            if (Array.isArray(SCHOOL_DATA[name])) {
+                SCHOOL_DATA[name].forEach(item => store.put(item));
+            }
+        });
+    } catch (e) {
+        console.warn("IndexedDB sync warning:", e);
+    }
+}
+
+// Load persisted items from localStorage and IndexedDB into SCHOOL_DATA
+(function loadPersistedSchoolData() {
+    try {
+        const savedActivities = localStorage.getItem('oudong_custom_activities');
+        if (savedActivities) {
+            const parsed = JSON.parse(savedActivities);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+                parsed.forEach(item => {
+                    if (item.image === 'assets/images/activities/04_08_2026.jpg') {
+                        item.image = 'assets/images/activities/04-08-26.jpg';
+                    }
+                });
+                SCHOOL_DATA.activities = parsed;
+            }
+        }
+
+        const savedKnowledge = localStorage.getItem('oudong_custom_knowledge');
+        if (savedKnowledge) {
+            const parsed = JSON.parse(savedKnowledge);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+                parsed.forEach(item => {
+                    if (item.image === 'assets/images/activities/04_08_2026.jpg') {
+                        item.image = 'assets/images/activities/04-08-26.jpg';
+                    }
+                });
+                SCHOOL_DATA.knowledge = parsed;
+            }
+        }
+
+        const savedStandards = localStorage.getItem('oudong_custom_standards');
+        if (savedStandards) {
+            const parsed = JSON.parse(savedStandards);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+                SCHOOL_DATA.standards = parsed;
+            }
+        }
+
+        const savedStaff = localStorage.getItem('oudong_custom_staff');
+        if (savedStaff) {
+            const parsed = JSON.parse(savedStaff);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+                SCHOOL_DATA.staff = parsed;
+            }
+        }
+    } catch (e) {
+        console.warn("Unable to load custom SCHOOL_DATA from localStorage:", e);
+    }
+
+    // Initialize IndexedDB in background
+    initIndexedDB();
+})();
+
+// Helper function to save current SCHOOL_DATA collections to localStorage & IndexedDB
+function saveSchoolData(collectionName) {
+    try {
+        if (collectionName === 'activities' || !collectionName) {
+            localStorage.setItem('oudong_custom_activities', JSON.stringify(SCHOOL_DATA.activities));
+        }
+        if (collectionName === 'knowledge' || !collectionName) {
+            localStorage.setItem('oudong_custom_knowledge', JSON.stringify(SCHOOL_DATA.knowledge));
+        }
+        if (collectionName === 'standards' || !collectionName) {
+            localStorage.setItem('oudong_custom_standards', JSON.stringify(SCHOOL_DATA.standards));
+        }
+        if (collectionName === 'staff' || !collectionName) {
+            localStorage.setItem('oudong_custom_staff', JSON.stringify(SCHOOL_DATA.staff));
+        }
+
+        // Also sync to IndexedDB
+        syncIndexedDBWithSchoolData();
+    } catch (e) {
+        console.error("Error saving SCHOOL_DATA to database:", e);
+    }
+}
+
+// Reset database to factory defaults
+function resetSchoolDataToDefault() {
+    if (confirm("តើអ្នកប្រាកដជាចង់កំណត់ទិន្នន័យទាំងអស់ទៅជាទិន្នន័យដើមវិញមែនទេ?")) {
+        localStorage.removeItem('oudong_custom_activities');
+        localStorage.removeItem('oudong_custom_knowledge');
+        localStorage.removeItem('oudong_custom_standards');
+        localStorage.removeItem('oudong_custom_staff');
+        
+        if (dbInstance) {
+            try {
+                const collections = ['activities', 'knowledge', 'standards', 'staff'];
+                const tx = dbInstance.transaction(collections, 'readwrite');
+                collections.forEach(name => tx.objectStore(name).clear());
+            } catch (e) {}
+        }
+        window.location.reload();
+    }
+}
+
+// ==========================================
+// DATABASE BACKUP & RESTORE UTILITIES (.json)
+// ==========================================
+
+// Export Database as JSON File
+function exportDatabaseBackup() {
+    const backupData = {
+        version: "1.0",
+        appName: "Oudong High School Database Backup",
+        exportDate: new Date().toISOString(),
+        data: {
+            info: SCHOOL_DATA.info,
+            staff: SCHOOL_DATA.staff,
+            activities: SCHOOL_DATA.activities,
+            knowledge: SCHOOL_DATA.knowledge,
+            standards: SCHOOL_DATA.standards
+        }
+    };
+
+    const jsonStr = JSON.stringify(backupData, null, 2);
+    const blob = new Blob([jsonStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const dateStr = new Date().toISOString().split('T')[0];
+    a.href = url;
+    a.download = `oudong_highschool_db_backup_${dateStr}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// Import Database from JSON File
+function importDatabaseBackup(file, callback) {
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        try {
+            const imported = JSON.parse(e.target.result);
+            if (imported && imported.data) {
+                if (Array.isArray(imported.data.staff)) SCHOOL_DATA.staff = imported.data.staff;
+                if (Array.isArray(imported.data.activities)) SCHOOL_DATA.activities = imported.data.activities;
+                if (Array.isArray(imported.data.knowledge)) SCHOOL_DATA.knowledge = imported.data.knowledge;
+                if (Array.isArray(imported.data.standards)) SCHOOL_DATA.standards = imported.data.standards;
+
+                saveSchoolData(); // Saves to both localStorage & IndexedDB
+
+                if (typeof callback === 'function') {
+                    callback(true, "បាននាំចូល និងស្តារទិន្នន័យ (Database Import) ដោយជោគជ័យ!");
+                }
+            } else {
+                throw new Error("ទម្រង់ឯកសារ Backup មិនត្រឹមត្រូវ!");
+            }
+        } catch (err) {
+            console.error("Database import error:", err);
+            if (typeof callback === 'function') {
+                callback(false, `បរាជ័យក្នុងការស្ដារទិន្នន័យ៖ ${err.message}`);
+            }
+        }
+    };
+    reader.readAsText(file);
+}
+
