@@ -898,4 +898,269 @@ textarea:focus-visible {
     box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
 }
 
+/* ==========================================
+   MULTI-IMAGE GALLERY & ADMIN UPLOADER STYLES
+   ========================================== */
+
+/* Card Gallery Badge */
+.news-img-wrap {
+    position: relative;
+}
+.news-gallery-badge {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(15, 23, 42, 0.82);
+    color: #ffffff;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Admin Multi-Image Preview Container */
+.admin-img-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.03);
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+}
+[data-theme="dark"] .admin-img-preview-grid {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.admin-img-card {
+    position: relative;
+    width: 100%;
+    height: 85px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    background: var(--card-bg);
+    transition: var(--transition);
+}
+.admin-img-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.admin-img-card.is-cover {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 10px rgba(217, 119, 6, 0.4);
+}
+.admin-img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.admin-img-card .cover-badge {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background: var(--secondary-color);
+    color: #ffffff;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+.admin-img-card .remove-img-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.9);
+    color: #ffffff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.admin-img-card .remove-img-btn:hover {
+    background: #dc2626;
+    transform: scale(1.15);
+}
+
+/* News Detail Gallery Carousel */
+.news-modal-gallery {
+    margin-bottom: 20px;
+}
+.news-main-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    background: #000000;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+@media (max-width: 768px) {
+    .news-main-img-wrap {
+        height: 260px;
+    }
+}
+.news-main-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    cursor: zoom-in;
+}
+.news-main-img-wrap img:hover {
+    transform: scale(1.02);
+}
+
+/* Gallery Navigation Overlay Arrows */
+.gallery-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.65);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 5;
+    transition: var(--transition);
+}
+.gallery-nav-btn:hover {
+    background: var(--primary-gradient);
+    color: #ffffff;
+    scale: 1.1;
+}
+.gallery-nav-btn.btn-prev {
+    left: 14px;
+}
+.gallery-nav-btn.btn-next {
+    right: 14px;
+}
+
+.gallery-counter-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(15, 23, 42, 0.75);
+    color: #ffffff;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 5;
+}
+
+/* Gallery Thumbnail Strip */
+.news-thumb-strip {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 4px 4px 4px;
+    margin-top: 10px;
+    scrollbar-width: thin;
+}
+.news-thumb-item {
+    width: 80px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 3px solid transparent;
+    cursor: pointer;
+    opacity: 0.65;
+    transition: var(--transition);
+}
+.news-thumb-item:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+.news-thumb-item.active-thumb {
+    opacity: 1;
+    border-color: var(--primary-light);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+.news-thumb-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Fullscreen Lightbox Modal */
+.lightbox-modal .modal-content {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(16px);
+    border: none;
+}
+.lightbox-modal img {
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+/* Article Formatted Body & Spacing */
+.article-body-content {
+    font-family: var(--font-khmer-body);
+    color: var(--text-dark);
+    font-size: 1.04rem;
+    line-height: 1.85;
+    letter-spacing: 0.15px;
+    word-break: break-word;
+}
+.article-paragraph {
+    margin-bottom: 1.25rem;
+    text-align: justify;
+}
+.article-paragraph:last-child {
+    margin-bottom: 0;
+}
+.article-body-content h4 {
+    font-family: var(--font-khmer-title);
+    color: var(--primary-color);
+    font-size: 1.15rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--secondary-light);
+    display: inline-block;
+}
+.article-body-content h5 {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.05rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+.article-list {
+    margin-bottom: 1.25rem;
+    padding-left: 1.2rem;
+}
+.article-list li {
+    margin-bottom: 0.5rem;
+    line-height: 1.75;
+}
+
+
 

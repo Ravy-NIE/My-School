@@ -541,11 +541,24 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <img id="modalNewsImg" src="" alt="" class="img-fluid rounded-4 mb-3 w-100"
-                        style="max-height: 380px; object-fit: cover;">
+                    <!-- Multi-Image Gallery Carousel Viewer -->
+                    <div class="news-modal-gallery">
+                        <div class="news-main-img-wrap" id="newsMainImgWrap">
+                            <img id="modalNewsImg" src="" alt="" onclick="openLightboxModal(this.src)" title="ចុចដើម្បីមើលរូបភាពធំពេញអេក្រង់">
+                            <button type="button" class="gallery-nav-btn btn-prev d-none" id="newsGalleryPrev" onclick="navigateNewsGallery(-1)">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button type="button" class="gallery-nav-btn btn-next d-none" id="newsGalleryNext" onclick="navigateNewsGallery(1)">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <span class="gallery-counter-badge d-none" id="newsGalleryCounter">រូបទី ១ នៃ ១</span>
+                        </div>
+                        <div class="news-thumb-strip d-none" id="modalNewsThumbs"></div>
+                    </div>
+
                     <small id="modalNewsDate" class="text-warning fw-bold d-block mb-2"></small>
                     <h3 id="modalNewsTitle" class="khmer-title fs-4 mb-3"></h3>
-                    <p id="modalNewsContent" class="text-muted" style="line-height: 1.8;"></p>
+                    <div id="modalNewsContent" class="article-body-content text-muted"></div>
                 </div>
             </div>
         </div>
@@ -589,35 +602,26 @@
                                     placeholder="ឧទាហរណ៍៖ គណៈគ្រប់គ្រងសាលា" required>
                             </div>
                             <div class="col-12">
-                                <label for="actImage" class="form-label small fw-bold">ជ្រើសរើសរូបភាព (Browse ពីម៉ាស៊ីន
-                                    ឬ ជ្រើសពី Folder Assets)</label>
-                                <div class="input-group mb-2">
-                                    <input type="file" id="actFilePicker" class="d-none" accept="image/*">
-                                    <button type="button" class="btn btn-outline-success rounded-start-3"
-                                        onclick="document.getElementById('actFilePicker').click()">
-                                        <i class="fa-solid fa-folder-open me-1"></i> Browse រកមើលរូបភាព...
-                                    </button>
-                                    <select id="actImageSelect" class="form-select"
-                                        onchange="updateImagePreview('actImage', 'actPreview', this.value);">
-                                        <option value="assets/images/activities/04-08-26.jpg">
-                                            assets/images/activities/04-08-26.jpg (ពិព័រណ៍)</option>
-                                        <option value="assets/images/activities/stem_fair.png">
-                                            assets/images/activities/stem_fair.png (STEM)</option>
-                                        <option value="assets/images/activities/sports_day.png">
-                                            assets/images/activities/sports_day.png (កីឡា)</option>
-                                        <option value="assets/images/knowledge/digital_learning.png">
-                                            assets/images/knowledge/digital_learning.png (បច្ចេកវិទ្យា)</option>
-                                        <option value="assets/images/banner/hero_bg.png">
-                                            assets/images/banner/hero_bg.png (សាលារៀន)</option>
-                                    </select>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <label class="form-label small fw-bold mb-0">
+                                        <i class="fa-solid fa-images text-success me-1"></i> រូបភាពព័ត៌មាន (អាចជ្រើសរើសបានច្រើនរូបភាព)
+                                    </label>
+                                    <small class="text-muted opacity-75">រូបភាពដំបូងជាគម្រប (Cover Photo)</small>
                                 </div>
-                                <input type="text" id="actImage" class="form-control rounded-3 mb-2"
-                                    value="assets/images/activities/stem_fair.png" placeholder="Path រូបភាព ឬ Data URL"
-                                    oninput="updateImagePreview('actImage', 'actPreview', this.value);" required>
-                                <div class="p-2 border rounded-3 text-center card-bg" id="actPreviewWrap">
-                                    <small class="text-muted d-block mb-1">រូបភាពគំរូ (Preview)៖</small>
-                                    <img id="actPreview" src="assets/images/activities/stem_fair.png" alt="Preview"
-                                        style="max-height: 120px; object-fit: contain;" class="rounded shadow-sm">
+                                <div class="input-group mb-2">
+                                    <input type="file" id="actMultiFilePicker" class="d-none" accept="image/*" multiple>
+                                    <button type="button" class="btn btn-success rounded-start-3"
+                                        onclick="document.getElementById('actMultiFilePicker').click()">
+                                        <i class="fa-solid fa-folder-plus me-1"></i> Browse រកមើលរូបភាពច្រើន...
+                                    </button>
+                                    <input type="text" id="actAddUrlInput" class="form-control" placeholder="ឬបញ្ចូល Path/URL រូបភាពបន្ថែម..." onkeypress="if(event.key==='Enter'){event.preventDefault(); addActivityImageFromInput();}">
+                                    <button type="button" class="btn btn-outline-success" onclick="addActivityImageFromInput()">
+                                        <i class="fa-solid fa-plus me-1"></i> បន្ថែម
+                                    </button>
+                                </div>
+                                <input type="hidden" id="actImage" value="assets/images/activities/stem_fair.png" required>
+                                <div id="actImagesPreviewList" class="admin-img-preview-grid">
+                                    <!-- Dynamic Thumbnail Cards Rendered by JS -->
                                 </div>
                             </div>
                             <div class="col-12">
@@ -626,9 +630,9 @@
                                     placeholder="សរសេរការសង្ខេបខ្លី..." required></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="actContent" class="form-label small fw-bold">ខ្លឹមសារព័ត៌មានលម្អិត</label>
-                                <textarea id="actContent" class="form-control rounded-3" rows="4"
-                                    placeholder="សរសេរខ្លឹមសារពេញ..." required></textarea>
+                                <label for="actContent" class="form-label small fw-bold">ខ្លឹមសារព័ត៌មានលម្អិត (ចុះបន្ទាត់ដើម្បីបំបែកកថាខណ្ឌ)</label>
+                                <textarea id="actContent" class="form-control rounded-3" rows="6"
+                                    placeholder="សរសេរខ្លឹមសារពេញ... (ប្រើ Enter ដើម្បីចុះបន្ទាត់បំបែកកថាខណ្ឌ ងាយស្រួលអាន)" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -684,23 +688,26 @@
                                     placeholder="ឧទាហរណ៍៖ ៥ នាទី" value="៥ នាទី" required>
                             </div>
                             <div class="col-md-6">
-                                <label for="knowImage" class="form-label small fw-bold">រូបភាពគម្រប (Browse ពីម៉ាស៊ីន ឬ
-                                    Assets Path)</label>
-                                <div class="input-group mb-2">
-                                    <input type="file" id="knowFilePicker" class="d-none" accept="image/*">
-                                    <button type="button" class="btn btn-outline-success rounded-start-3"
-                                        onclick="document.getElementById('knowFilePicker').click()">
-                                        <i class="fa-solid fa-folder-open me-1"></i> Browse...
-                                    </button>
-                                    <input type="text" id="knowImage" class="form-control"
-                                        value="assets/images/knowledge/digital_learning.png"
-                                        placeholder="assets/images/..."
-                                        oninput="updateImagePreview('knowImage', 'knowPreview', this.value);" required>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <label class="form-label small fw-bold mb-0">
+                                        <i class="fa-solid fa-images text-success me-1"></i> រូបភាពអត្ថបទ (បន្ថែមបានច្រើន)
+                                    </label>
+                                    <small class="text-muted opacity-75">រូបដំបូងជាគម្រប</small>
                                 </div>
-                                <div class="p-2 border rounded-3 text-center card-bg" id="knowPreviewWrap">
-                                    <img id="knowPreview" src="assets/images/knowledge/digital_learning.png"
-                                        alt="Preview" style="max-height: 90px; object-fit: contain;"
-                                        class="rounded shadow-sm">
+                                <div class="input-group mb-2">
+                                    <input type="file" id="knowMultiFilePicker" class="d-none" accept="image/*" multiple>
+                                    <button type="button" class="btn btn-success rounded-start-3"
+                                        onclick="document.getElementById('knowMultiFilePicker').click()">
+                                        <i class="fa-solid fa-folder-plus me-1"></i> Browse...
+                                    </button>
+                                    <input type="text" id="knowAddUrlInput" class="form-control" placeholder="Path/URL..." onkeypress="if(event.key==='Enter'){event.preventDefault(); addKnowledgeImageFromInput();}">
+                                    <button type="button" class="btn btn-outline-success" onclick="addKnowledgeImageFromInput()">
+                                        <i class="fa-solid fa-plus me-1"></i>
+                                    </button>
+                                </div>
+                                <input type="hidden" id="knowImage" value="assets/images/knowledge/digital_learning.png" required>
+                                <div id="knowImagesPreviewList" class="admin-img-preview-grid">
+                                    <!-- Dynamic Thumbnails -->
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -730,8 +737,8 @@
                                     placeholder="សរសេរការសង្ខេបខ្លី..." required></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="knowContent" class="form-label small fw-bold">ខ្លឹមសារអត្ថបទ</label>
-                                <textarea id="knowContent" class="form-control rounded-3" rows="3"
+                                <label for="knowContent" class="form-label small fw-bold">ខ្លឹមសារអត្ថបទ (ចុះបន្ទាត់ដើម្បីបំបែកកថាខណ្ឌ)</label>
+                                <textarea id="knowContent" class="form-control rounded-3" rows="5"
                                     placeholder="សរសេរខ្លឹមសារពេញ..." required></textarea>
                             </div>
                         </div>
@@ -1092,6 +1099,20 @@
                 </div>
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
                     aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Lightbox Modal for Image Zooming -->
+    <div class="modal fade lightbox-modal" id="imageLightboxModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close btn-close-white ms-auto fs-4" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-2">
+                    <img id="lightboxImg" src="" alt="Enlarged View" class="img-fluid rounded-4 shadow-lg">
+                </div>
             </div>
         </div>
     </div>

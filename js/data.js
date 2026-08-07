@@ -904,10 +904,15 @@ const SCHOOL_DATA = {
             title: "ការតាំងពិព័រណ៌ស្នាដៃសិស្ស ឆ្នាំសិក្សា ២០២៥ ២០២៦",
             category: "news",
             date: "ថ្ងៃទី ០៤ ខែ សីហា ឆ្នាំ ២០២៦",
-            author: "ICT",
+            author: "គណៈកម្មការ STEM & ICT",
             image: "assets/images/activities/04-08-26.jpg",
+            images: [
+                "assets/images/activities/04-08-26.jpg",
+                "assets/images/activities/stem_fair.png",
+                "assets/images/activities/sports_day.png"
+            ],
             summary: "នៅក្នុងពិព័រណ៍ ឆ្នាំ២០២៦ នេះ សិស្សានុសិស្សថ្នាក់ទី១០ ដល់ទី១២ បានបង្ហាញស្នាដៃប្រឌិតបង្កើតថ្មីជាច្រើន",
-            content: "នៅក្នុងពិព័រណ៍ ឆ្នាំ២០២៦ នេះ សិស្សានុសិស្សថ្នាក់ទី១០ ដល់ទី១២ បានបង្ហាញស្នាដៃប្រឌិតបង្កើតថ្មីជាច្រើន ដូចជា ប្រព័ន្ធស្រោចស្រពដំណាំស្វ័យប្រវត្តិ រ៉ូបូត និងគម្រោងបច្ចេកវិទ្យាជាច្រើនទៀត។",
+            content: "នៅក្នុងពិព័រណ៍ ឆ្នាំ២០២៦ នេះ សិស្សានុសិស្សថ្នាក់ទី១០ ដល់ទី១២ បានបង្ហាញស្នាដៃប្រឌិតបង្កើតថ្មីជាច្រើន ដូចជា ប្រព័ន្ធស្រោចស្រពដំណាំស្វ័យប្រវត្តិ រ៉ូបូត និងគម្រោងបច្ចេកវិទ្យាជាច្រើនទៀត។\n\n# ស្នាដៃលេចធ្លោរបស់សិស្ស\nសិស្សានុសិស្សបានខិតខំប្រឹងប្រែងស្រាវជ្រាវ និងអនុវត្តផ្ទាល់អស់រយៈពេលជាច្រើនខែ ដោយមានការចង្អុលបង្ហាញយ៉ាងយកចិត្តទុកដាក់ពីលោកគ្រូអ្នកគ្រូដឹកនាំ។ គម្រោងនីមួយៗសុទ្ធសឹងតែឆ្លើយតបទៅនឹងតម្រូវការជាក់ស្តែងក្នុងសង្គម និងកសិកម្មទំនើប។\n\n# ការវាយតម្លៃ និងការលើកទឹកចិត្ត\nគណៈគ្រប់គ្រងសាលាបានផ្តល់ប័ណ្ណសរសើរ និងរង្វាន់លើកទឹកចិត្តដល់ក្រុមសិស្សដែលមានស្នាដៃឆ្នើម។ ព្រឹត្តិការណ៍នេះបានបង្កើនស្មារតីច្នៃប្រឌិត និងការស្រឡាញ់មុខវិជ្ជា STEM យ៉ាងខ្លាំងក្នុងចំណោមសិស្សានុសិស្សទាំងអស់។",
             views: 520,
             featured: true
         },
@@ -918,8 +923,13 @@ const SCHOOL_DATA = {
             date: "២៨ កក្កដា ២០២៦",
             author: "គណៈកម្មការ STEM",
             image: "assets/images/activities/stem_fair.png",
+            images: [
+                "assets/images/activities/stem_fair.png",
+                "assets/images/activities/04-08-26.jpg",
+                "assets/images/knowledge/digital_learning.png"
+            ],
             summary: "សិស្សានុសិស្សវិទ្យាល័យឧដុង្គបានបង្កើតគម្រោងរ៉ូបូត និងឧបករណ៍ស្វ័យប្រវត្តិកម្មឆ្លាតវៃចំនួន ២៥ គម្រោង...",
-            content: "នៅក្នុងពិព័រណ៍ STEM ឆ្នាំ២០២៦ នេះ សិស្សានុសិស្សថ្នាក់ទី១០ ដល់ទី១២ បានបង្ហាញស្នាដៃប្រឌិតបង្កើតថ្មីជាច្រើន ដូចជា ប្រព័ន្ធស្រោចស្រពដំណាំស្វ័យប្រវត្តិដោយ solar cell, រ៉ូបូតសម្អាតថ្នាក់រៀន និងប្រព័ន្ធប្រកាសអាសន្នគ្រោះធម្មជាតិ។ គណៈកម្មការបានវាយតម្លៃខ្ពស់ចំពោះគំនិតច្នៃប្រឌិតរបស់សិស្ស។",
+            content: "នៅក្នុងពិព័រណ៍ STEM ឆ្នាំ២០២៦ នេះ សិស្សានុសិស្សថ្នាក់ទី១០ ដល់ទី១២ បានបង្ហាញស្នាដៃប្រឌិតបង្កើតថ្មីជាច្រើន ដូចជា ប្រព័ន្ធស្រោចស្រពដំណាំស្វ័យប្រវត្តិដោយ solar cell, រ៉ូបូតសម្អាតថ្នាក់រៀន និងប្រព័ន្ធប្រកាសអាសន្នគ្រោះធម្មជាតិ។\n\n# គោលបំណងនៃពិព័រណ៍\nកម្មវិធីនេះមានគោលបំណងជំរុញឲ្យសិស្សានុសិស្សចេះអនុវត្តទ្រឹស្ដីដែលបានរៀនក្នុងថ្នាក់ ទៅជាការបង្កើតឧបករណ៍ប្រើប្រាស់ពិតប្រាកដក្នុងជីវភាពរស់នៅប្រចាំថ្ងៃ។\n\n- ការបង្កើតរ៉ូបូតកសិកម្ម\n- ប្រព័ន្ធគ្រប់គ្រងថាមពលសូឡា\n- ឧបករណ៍វាស់ស្ទង់គុណភាពខ្យល់ និងទឹក\n\nគណៈកម្មការបានវាយតម្លៃខ្ពស់ចំពោះគំនិតច្នៃប្រឌិត និងភាពប៉ិនប្រសប់របស់សិស្សានុសិស្សគ្រប់រូប។",
             views: 540,
             featured: true
         },
@@ -930,8 +940,12 @@ const SCHOOL_DATA = {
             date: "២២ កក្កដា ២០២៦",
             author: "គ្រូអប់រំកាយ",
             image: "assets/images/activities/sports_day.png",
+            images: [
+                "assets/images/activities/sports_day.png",
+                "assets/images/banner/hero_bg.png"
+            ],
             summary: "ការប្រកួតកីឡាប្រចាំឆ្នាំដើម្បីលើកកម្ពស់សុខភាព មិត្តភាព និងភាពសាមគ្គីរវាងសិស្សគ្រប់កម្រិតថ្នាក់...",
-            content: "ព្រឹត្តិការណ៍កីឡាសាលាឆ្នាំនេះទទួលបានការចូលរួមពីក្រុមកីឡាករសិស្សចំនួន ១៦ ក្រុម។ ក្រៅពីការប្រកួតបាល់ទះ និងបាល់ទាត់ ក៏មានការប្រកួតរត់ប្រណាំង និងល្បែងប្រជាប្រិយខ្មែរផងដែរ។ គោលបំណងគឺដើម្បីឲ្យសិស្សមានសុខភាពល្អ បញ្ជៀសផុតពីគ្រឿងញៀន និងស្មារតីក្រុម។",
+            content: "ព្រឹត្តិការណ៍កីឡាសាលាឆ្នាំនេះទទួលបានការចូលរួមពីក្រុមកីឡាករសិស្សចំនួន ១៦ ក្រុមមកពីគ្រប់កម្រិតថ្នាក់។ ក្រៅពីការប្រកួតបាល់ទះ និងបាល់ទាត់ ក៏មានការប្រកួតរត់ប្រណាំង និងល្បែងប្រជាប្រិយខ្មែរផងដែរ។\n\n# លទ្ធផលនៃការប្រកួត\nការប្រកួតបានប្រព្រឹត្តទៅដោយបរិយាកាសរីករាយ និងមានភាពស្និទ្ធស្នាលបំផុត។ ក្រុមបាល់ទាត់ថ្នាក់ទី១២A១ ទទួលបានជ័យលាភីលេខ១ អមដោយការអបអរសាទរយ៉ាងកកកុញពីសំណាក់សិស្សានុសិស្ស និងលោកគ្រូអ្នកគ្រូ។\n\nគោលបំណងសំខាន់គឺដើម្បីឲ្យសិស្សមានសុខភាពល្អ បញ្ជៀសផុតពីគ្រឿងញៀន និងពង្រឹងស្មារតីសាមគ្គីភាពក្រុម។",
             views: 420,
             featured: true
         },
@@ -942,8 +956,12 @@ const SCHOOL_DATA = {
             date: "១៥ កក្កដា ២០២៦",
             author: "យុវជនកាកបាទក្រហមសាលា",
             image: "assets/images/activities/stem_fair.png",
+            images: [
+                "assets/images/activities/stem_fair.png",
+                "assets/images/activities/sports_day.png"
+            ],
             summary: "លោកគ្រូ អ្នកគ្រូ និងសិស្សានុសិស្សបានរួមគ្នាដាំដើមឈើហូបផ្លែ និងដើមឈើស្រមោលចំនួន ៣០០ ដើម...",
-            content: "ដើម្បីចូលរួមចំណែកការពារបរិស្ថាន និងបង្កើតបរិយាកាសសិក្សាស្រស់បំព្រង ក្លឹបបរិស្ថានសាលាបានរៀបចំសកម្មភាពដាំដើមឈើជុំវិញបរិវេណសាលា និងដាំផ្កាលម្អមុខអាគារសិក្សា។ សកម្មភាពនេះបណ្តុះស្មារតីស្រឡាញ់ធម្មជាតិដល់យុវជន។",
+            content: "ដើម្បីចូលរួមចំណែកការពារបរិស្ថាន និងបង្កើតបរិយាកាសសិក្សាស្រស់បំព្រង ក្លឹបបរិស្ថានសាលាបានរៀបចំសកម្មភាពដាំដើមឈើជុំវិញបរិវេណសាលា និងដាំផ្កាលម្អមុខអាគារសិក្សា។\n\n# សកម្មភាពចម្បងៗ\n- ដាំដើមឈើស្រមោល និងដើមឈើហូបផ្លែចំនួន ៣០០ ដើម\n- សម្អាត និងបែងចែកសំរាមតាមបច្ចេកទេស ៣R\n- រៀបចំសួនផ្កាគំរូមុខអាគារសិក្សា\n\nសកម្មភាពនេះបណ្តុះស្មារតីស្រឡាញ់ธรรมชาติ និងការទទួលខុសត្រូវលើបរិស្ថានដល់យុវជនជំនាន់ក្រោយ។",
             views: 380,
             featured: false
         },
@@ -954,8 +972,12 @@ const SCHOOL_DATA = {
             date: "០៥ កក្កដា ២០២៦",
             author: "គណៈនាយកសាលា",
             image: "assets/images/knowledge/digital_learning.png",
+            images: [
+                "assets/images/knowledge/digital_learning.png",
+                "assets/images/activities/04-08-26.jpg"
+            ],
             summary: "ការបើកថ្នាក់បំប៉នដោយឥតគិតថ្លៃលើមុខវិជ្ជាគន្លឹះចំនួន ៧ សម្រាប់សិស្សថ្នាក់ទី១២ ទាំងអស់...",
-            content: "វិទ្យាល័យឧដុង្គបានរៀបចំថ្នាក់រៀនបន្ថែមម៉ោងដោយមានការស្ម័គ្រចិត្តពីលោកគ្រូអ្នកគ្រូបទពិសោធន៍ខ្ពស់ ដើម្បីរំលឹកមេរៀន ធ្វើលំហាត់គំរូ និងដោះស្រាយវិញ្ញាសាប្រឡងឆ្នាំចាស់ៗ ជូនសិស្សថ្នាក់ទី១២ ត្រៀមប្រឡងបាក់ឌុបខាងមុខ។",
+            content: "វិទ្យាល័យឧដុង្គបានរៀបចំថ្នាក់រៀនបន្ថែមម៉ោងដោយមានការស្ម័គ្រចិត្តពីលោកគ្រូអ្នកគ្រូបទពិសោធន៍ខ្ពស់ ដើម្បីរំលឹកមេរៀន ធ្វើលំហាត់គំរូ និងដោះស្រាយវិញ្ញាសាប្រឡងឆ្នាំចាស់ៗ ជូនសិស្សថ្នាក់ទី១២ ត្រៀមប្រឡងបាក់ឌុបខាងមុខ។\n\n# មុខវិជ្ជាបំប៉នសំខាន់ៗ\nថ្នាក់បំប៉នផ្តោតលើមុខវិជ្ជា គណិតវិទ្យា, រូបវិទ្យា, គីមីវិទ្យា, ជីវវិទ្យា, អក្សរសាស្ត្រខ្មែរ, ប្រវត្តិវិទ្យា និងភាសាអង់គ្លេស។\n\nលោកគ្រូអ្នកគ្រូបានត្រៀមសន្លឹកកិច្ចការ និងវិធីសាស្ត្រដោះស្រាយលំហាត់លឿនៗ ជូនសិស្សានុសិស្សដើម្បីបង្កើនទំនុកចិត្តក្នុងការប្រឡង។",
             views: 890,
             featured: true
         }
@@ -970,9 +992,13 @@ const SCHOOL_DATA = {
             date: "២៥ កក្កដា ២០២៦",
             author: "លោកស្រី ចាន់ ធារី",
             image: "assets/images/knowledge/digital_learning.png",
+            images: [
+                "assets/images/knowledge/digital_learning.png",
+                "assets/images/activities/stem_fair.png"
+            ],
             readTime: "៥ នាទី",
             summary: "គន្លឹះសំខាន់ៗទាំង ៥ យ៉ាងក្នុងការបែងចែកពេលវេលាសិក្សា និងការប្រើប្រាស់បច្ចេកទេស Pomodoro Technique...",
-            content: "ការសិក្សាទទួលបានផលល្អ មិនមែនទាមទារការទន្ទិញមេរៀនច្រើនម៉ោងជាប់គ្នានោះទេ ប៉ុន្តែគឺផ្អែកលើការផ្តោតអារម្មណ៍ និងការសម្រាកត្រូវតាមពេលវេលា។ ក្នុងអត្ថបទនេះ យើងបង្ហាញពីវិធីបែងចែកមុខវិជ្ជាលំបាក និងងាយស្រួល ព្រមទាំងការកត់ត្រា Note រៀបរយ។",
+            content: "ការសិក្សាទទួលបានផលល្អ មិនមែនទាមទារការទន្ទិញមេរៀនច្រើនម៉ោងជាប់គ្នានោះទេ ប៉ុន្តែគឺផ្អែកលើការផ្តោតអារម្មណ៍ និងការសម្រាកត្រូវតាមពេលវេលា។\n\n# គន្លឹះសំខាន់ៗទាំង ៥\n- ១. កំណត់គោលដៅសិក្សាច្បាស់លាស់ប្រចាំថ្ងៃ\n- ២. ប្រើប្រាស់បច្ចេកទេស Pomodoro (រៀន ២៥ នាទី សម្រាក ៥ នាទី)\n- ៣. រៀបចំកន្លែងសិក្សាឲ្យមានរបៀប និងស្ងប់ស្ងាត់\n- ៤. ធ្វើការកត់ត្រាសង្ខេប (Mind Mapping/Summary Notes)\n- ៥. ថែរក្សាសុខភាព ដេកលក់ឲ្យគ្រប់គ្រាន់ និងហាត់ប្រាណ\n\nការអនុវត្តតាមវិធីសាស្ត្រនេះជួយឲ្យសិស្សចងចាំមេរៀនបានយូរ និងមិនមានអារម្មណ៍តានតឹងមុនពេលប្រឡង។",
             downloadFile: "assets/docs/study_planner_template.pdf"
         },
         {
@@ -982,9 +1008,13 @@ const SCHOOL_DATA = {
             date: "១៨ កក្កដា ២០២៦",
             author: "លោក សុខ វិសាល",
             image: "assets/images/knowledge/digital_learning.png",
+            images: [
+                "assets/images/knowledge/digital_learning.png",
+                "assets/images/activities/04-08-26.jpg"
+            ],
             readTime: "៧ នាទី",
             summary: "របៀបប្រើប្រាស់ប្រភពព័ត៌មានជឿជាក់លើអ៊ីនធឺណិត និងបណ្ណាល័យឌីជីថលសម្រាប់សិស្សវិទ្យាល័យ...",
-            content: "បច្ចេកវិទ្យាឌីជីថល និងឧបករណ៍ AI អាចជាជំនួយការដ៏ល្អក្នុងការរៀនសូត្រ ប្រសិនបើប្រើប្រាស់ត្រូវទិសដៅ។ សិស្សអាចស្វែងរកមេរៀន វីដេអូពន្យល់ពិសោធន៍ និងបណ្ណាល័យអេឡិចត្រូនិចដោយសុវត្ថិភាព។",
+            content: "បច្ចេកវិទ្យាឌីជីថល និងឧបករណ៍ AI អាចជាជំនួយការដ៏ល្អក្នុងការរៀនសូត្រ ប្រសិនបើប្រើប្រាស់ត្រូវទិសដៅ។ សិស្សអាចស្វែងរកមេរៀន វីដេអូពន្យល់ពិសោធន៍ និងបណ្ណាល័យអេឡិចត្រូនិចដោយសុវត្ថិភាព។\n\n# ប្រភពធនធានសិក្សាឌីជីថល\n- បណ្ណាល័យអេឡិចត្រូនិចរបស់ក្រសួងអប់រំ\n- វីដេអូបង្រៀនពិសោធន៍វិទ្យាសាស្ត្រលើ YouTube / EduTV\n- កម្មវិធីស្វែងរកឯកសារស្រាវជ្រាវ និងវចនានុក្រមអនឡាញ\n\nសិស្សានុសិស្សត្រូវចេះវិភាគ ផ្ទៀងផ្ទាត់ប្រភពព័ត៌មាន និងប្រើប្រាស់បច្ចេកវិទ្យាដោយការទទួលខុសត្រូវ។",
             downloadFile: "assets/docs/digital_learning_guide.pdf"
         },
         {
@@ -994,21 +1024,13 @@ const SCHOOL_DATA = {
             date: "១០ កក្កដា ២០២៦",
             author: "លោក គឹម សុជាតិ",
             image: "assets/images/activities/stem_fair.png",
+            images: [
+                "assets/images/activities/stem_fair.png",
+                "assets/images/knowledge/digital_learning.png"
+            ],
             readTime: "១០ នាទី",
             summary: "សង្ខេបសន្លឹកកិច្ចការរូបមន្តសំខាន់ៗ និងវិធីសាស្ត្រគណនាលឿន និងត្រឹមត្រូវ...",
-            content: "ចងក្រងរូបមន្តសំខាន់ៗលើមុខវិជ្ជារូបវិទ្យា និងគណិតវិទ្យា សម្រាប់សិស្សស្វ័យសិក្សា និងដោះស្រាយលំហាត់គំរូ step-by-step។",
-            downloadFile: "assets/docs/formulas_grade12.pdf"
-        },
-        {
-            id: 71,
-            title: "ការតាំងពិព័រណ៌ស្នាដៃសិស្ស ឆ្នាំ២០២៦",
-            category: "science",
-            date: "០៤ សីហា ២០២៦",
-            author: "ICT",
-            image: "assets/images/activities/04-08-26.jpg",
-            readTime: "១០ នាទី",
-            summary: "ការតាំងពិព័រណ៌ស្នាដៃសិស្ស ឆ្នាំ២០២៦។",
-            content: "នៅក្នុងពិព័រណ៍ ឆ្នាំ២០២៦ នេះ សិស្សានុសិស្សថ្នាក់ទី១០ ដល់ទី១២ បានបង្ហាញស្នាដៃប្រឌិតបង្កើតថ្មីជាច្រើន។",
+            content: "ចងក្រងរូបមន្តសំខាន់ៗលើមុខវិជ្ជារូបវិទ្យា និងគណិតវិទ្យា សម្រាប់សិស្សស្វ័យសិក្សា និងដោះស្រាយលំហាត់គំរូ step-by-step។\n\n# គន្លឹះដោះស្រាយលំហាត់\n- អានប្រធានលំហាត់ឲ្យយល់ច្បាស់ និងស្រង់បម្រាប់\n- ជ្រើសរើសរូបមន្តដែលត្រូវគ្នា និងប្តូរខ្នាតឲ្យត្រូវតាមប្រព័ន្ធអន្តរជាតិ (SI)\n- ពិនិត្យមើលលទ្ធផលគណនាចុងក្រោយ\n\nទាញយកសន្លឹកកិច្ចការ PDF ខាងក្រោមដើម្បីសិក្សាបន្ថែមនៅផ្ទះ។",
             downloadFile: "assets/docs/formulas_grade12.pdf"
         }
     ],
@@ -1094,7 +1116,7 @@ function initIndexedDB() {
         request.onsuccess = (event) => {
             dbInstance = event.target.result;
             console.log("IndexedDB database connected successfully.");
-            syncIndexedDBWithSchoolData();
+            loadDataFromIndexedDB();
             resolve(dbInstance);
         };
 
@@ -1108,6 +1130,43 @@ function initIndexedDB() {
             });
         };
     });
+}
+
+// Load data from IndexedDB into SCHOOL_DATA for permanent large-file/base64 image storage
+function loadDataFromIndexedDB() {
+    if (!dbInstance) return;
+    try {
+        const collections = ['activities', 'knowledge', 'standards', 'staff'];
+        const tx = dbInstance.transaction(collections, 'readonly');
+        let updatedCount = 0;
+
+        collections.forEach(name => {
+            const store = tx.objectStore(name);
+            const req = store.getAll();
+            req.onsuccess = () => {
+                if (req.result && Array.isArray(req.result) && req.result.length > 0) {
+                    SCHOOL_DATA[name] = req.result;
+                    updatedCount++;
+                    
+                    // Re-render UI views dynamically when IndexedDB data loads
+                    if (name === 'activities' && typeof renderActivities === 'function') {
+                        renderActivities(document.querySelector('#activity-filters .filter-btn.active')?.getAttribute('data-filter') || 'all');
+                    }
+                    if (name === 'knowledge' && typeof renderKnowledge === 'function') {
+                        renderKnowledge('all');
+                    }
+                    if (name === 'staff' && typeof renderStaff === 'function') {
+                        renderStaff(typeof currentStaffCategory !== 'undefined' ? currentStaffCategory : 'all', typeof currentStaffSubject !== 'undefined' ? currentStaffSubject : 'all');
+                    }
+                    if (name === 'standards' && typeof renderStandards === 'function') {
+                        renderStandards();
+                    }
+                }
+            };
+        });
+    } catch (e) {
+        console.warn("IndexedDB load warning:", e);
+    }
 }
 
 // Sync all collections into IndexedDB
@@ -1128,7 +1187,7 @@ function syncIndexedDBWithSchoolData() {
     }
 }
 
-// Load persisted items from localStorage and IndexedDB into SCHOOL_DATA
+// Load persisted items from localStorage into SCHOOL_DATA
 (function loadPersistedSchoolData() {
     try {
         const savedActivities = localStorage.getItem('oudong_custom_activities');
@@ -1182,6 +1241,7 @@ function syncIndexedDBWithSchoolData() {
 
 // Helper function to save current SCHOOL_DATA collections to localStorage & IndexedDB
 function saveSchoolData(collectionName) {
+    // 1. Save to localStorage (with fallback if Base64 images exceed 5MB quota)
     try {
         if (collectionName === 'activities' || !collectionName) {
             localStorage.setItem('oudong_custom_activities', JSON.stringify(SCHOOL_DATA.activities));
@@ -1195,12 +1255,12 @@ function saveSchoolData(collectionName) {
         if (collectionName === 'staff' || !collectionName) {
             localStorage.setItem('oudong_custom_staff', JSON.stringify(SCHOOL_DATA.staff));
         }
-
-        // Also sync to IndexedDB
-        syncIndexedDBWithSchoolData();
     } catch (e) {
-        console.error("Error saving SCHOOL_DATA to database:", e);
+        console.warn("localStorage quota reached for large images. Data will be saved permanently in IndexedDB:", e);
     }
+
+    // 2. Always sync to IndexedDB (supports large Base64 images up to hundreds of MBs)
+    syncIndexedDBWithSchoolData();
 }
 
 // Reset database to factory defaults

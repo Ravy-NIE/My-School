@@ -367,6 +367,9 @@ function renderStaff(filterCategory = 'all', filterSubject = 'all') {
 // ==========================================
 // 4. RENDER ACTIVITIES & NEWS
 // ==========================================
+// ==========================================
+// 4. RENDER ACTIVITIES & NEWS
+// ==========================================
 function renderActivities(filterCategory = 'all') {
     const container = document.getElementById('activities-grid');
     if (!container) return;
@@ -385,12 +388,17 @@ function renderActivities(filterCategory = 'all') {
     };
 
     activitiesList.forEach(item => {
+        const itemImages = Array.isArray(item.images) && item.images.length > 0 ? item.images : [item.image];
+        const coverImg = itemImages[0] || 'assets/images/banner/hero_bg.png';
+        const hasGallery = itemImages.length > 1;
+
         const cardHtml = `
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="news-card">
                     <div class="news-img-wrap">
-                        <img src="${item.image}" alt="${item.title}" onerror="this.onerror=null; this.src='assets/images/banner/hero_bg.png'">
+                        <img src="${coverImg}" alt="${item.title}" onerror="this.onerror=null; this.src='assets/images/banner/hero_bg.png'">
                         <span class="news-category-badge">${categoryNames[item.category] || 'សកម្មភាព'}</span>
+                        ${hasGallery ? `<span class="news-gallery-badge" title="មានរូបភាពចំនួន ${itemImages.length} ក្នុងអត្ថបទ"><i class="fa-solid fa-images me-1"></i> ${itemImages.length} រូបភាព</span>` : ''}
                     </div>
                     <div class="news-body">
                         <div class="news-date">
@@ -433,6 +441,9 @@ function renderKnowledge(filterCategory = 'all') {
         : SCHOOL_DATA.knowledge.filter(k => k.category === filterCategory);
 
     items.forEach(article => {
+        const itemImages = Array.isArray(article.images) && article.images.length > 0 ? article.images : [article.image];
+        const hasGallery = itemImages.length > 1;
+
         const cardHtml = `
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="knowledge-card">
@@ -440,15 +451,23 @@ function renderKnowledge(filterCategory = 'all') {
                         <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2">
                             <i class="fa-solid fa-book-open me-1"></i> ចំណេះដឹង
                         </span>
-                        <small class="text-muted"><i class="fa-regular fa-clock me-1"></i> ${article.readTime}</small>
+                        <div class="d-flex align-items-center gap-2">
+                            ${hasGallery ? `<span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-2 py-1"><i class="fa-solid fa-images me-1"></i> ${itemImages.length}</span>` : ''}
+                            <small class="text-muted"><i class="fa-regular fa-clock me-1"></i> ${article.readTime}</small>
+                        </div>
                     </div>
                     <h4 class="khmer-title fs-5 mb-2">${article.title}</h4>
                     <p class="text-muted small mb-3">${article.summary}</p>
                     <div class="d-flex align-items-center justify-content-between pt-3 border-top">
                         <small class="text-muted"><i class="fa-solid fa-user-pen me-1"></i> ${article.author}</small>
-                        <a href="${article.downloadFile}" class="btn btn-sm btn-outline-primary rounded-pill" download>
-                            <i class="fa-solid fa-download me-1"></i> ទាញយក PDF
-                        </a>
+                        <div class="d-flex gap-1">
+                            <button class="btn btn-sm btn-outline-success rounded-pill px-3" onclick="openNewsModal(${article.id})">
+                                <i class="fa-solid fa-eye me-1"></i> អាន
+                            </button>
+                            <a href="${article.downloadFile}" class="btn btn-sm btn-outline-primary rounded-pill" download>
+                                <i class="fa-solid fa-download me-1"></i> PDF
+                            </a>
+                        </div>
                     </div>
                     ${isAdminMode ? `
                         <div class="admin-card-actions">
@@ -522,8 +541,85 @@ function renderStandards() {
 }
 
 // ==========================================
-// 7. MODAL POPUP HANDLERS
+// 7. MODAL POPUP & ARTICLE FORMATTING HANDLERS
 // ==========================================
+
+// Helper function to format raw article text into styled HTML paragraphs with clean line spacing
+function formatArticleContent(rawContent) {
+    if (!rawContent) return '';
+    
+    // Split content by double newlines or single newlines
+    const paragraphs = rawContent.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+    if (paragraphs.length === 0) return `<p class="article-paragraph">${rawContent}</p>`;
+    
+    return paragraphs.map(p => {
+        const trimmed = p.trim();
+        if (trimmed.startsWith('# ')) {
+            return `<h4 class="khmer-title fs-5 mt-4 mb-2 text-primary">${trimmed.replace(/^#\s*/, '')}</h4>`;
+        }
+        if (trimmed.startsWith('## ')) {
+            return `<h5 class="fw-bold mt-3 mb-2 text-success">${trimmed.replace(/^##\s*/, '')}</h5>`;
+        }
+        if (trimmed.includes('\n- ') || trimmed.includes('\n• ') || trimmed.startsWith('- ') || trimmed.startsWith('• ')) {
+            const lines = trimmed.split('\n');
+            let html = '<ul class="article-list mb-3 ps-3">';
+            lines.forEach(line => {
+                const cleanLine = line.replace(/^[-•]\s*/, '').trim();
+                if (cleanLine) html += `<li class="mb-1">${cleanLine}</li>`;
+            });
+            html += '</ul>';
+            return html;
+        }
+        const formattedPara = trimmed.replace(/\n/g, '<br>');
+        return `<p class="article-paragraph mb-3">${formattedPara}</p>`;
+    }).join('');
+}
+
+// Open Fullscreen Lightbox Modal
+function openLightboxModal(src) {
+    if (!src) return;
+    const lightboxImg = document.getElementById('lightboxImg');
+    if (lightboxImg) lightboxImg.src = src;
+    const modalEl = document.getElementById('imageLightboxModal');
+    if (modalEl) {
+        const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+        modal.show();
+    }
+}
+
+// Update News Gallery Active Image & Thumbnails
+function updateNewsGalleryUI(idx) {
+    if (!currentGalleryImages || currentGalleryImages.length === 0) return;
+    currentGalleryIndex = (idx + currentGalleryImages.length) % currentGalleryImages.length;
+    
+    const mainImg = document.getElementById('modalNewsImg');
+    if (mainImg) {
+        mainImg.style.opacity = '0.4';
+        setTimeout(() => {
+            mainImg.src = currentGalleryImages[currentGalleryIndex];
+            mainImg.onerror = function() {
+                this.onerror = null;
+                this.src = 'assets/images/banner/hero_bg.png';
+            };
+            mainImg.style.opacity = '1';
+        }, 120);
+    }
+
+    const counter = document.getElementById('newsGalleryCounter');
+    if (counter) {
+        counter.innerText = `រូបទី ${currentGalleryIndex + 1} នៃ ${currentGalleryImages.length}`;
+    }
+
+    const thumbs = document.querySelectorAll('#modalNewsThumbs .news-thumb-item');
+    thumbs.forEach((thumb, i) => {
+        thumb.classList.toggle('active-thumb', i === currentGalleryIndex);
+    });
+}
+
+function navigateNewsGallery(dir) {
+    updateNewsGalleryUI(currentGalleryIndex + dir);
+}
+
 function openStaffModal(id) {
     const staff = SCHOOL_DATA.staff.find(s => s.id === id);
     if (!staff) return;
@@ -542,15 +638,64 @@ function openStaffModal(id) {
 }
 
 function openNewsModal(id) {
-    const item = SCHOOL_DATA.activities.find(a => a.id === id);
+    const item = SCHOOL_DATA.activities.find(a => a.id === id) || SCHOOL_DATA.knowledge.find(k => k.id === id);
     if (!item) return;
 
-    document.getElementById('modalNewsImg').src = item.image;
-    document.getElementById('modalNewsTitle').innerText = item.title;
-    document.getElementById('modalNewsDate').innerText = item.date + ' | ដោយ៖ ' + item.author;
-    document.getElementById('modalNewsContent').innerText = item.content;
+    // Multi-Image Gallery Setup
+    currentGalleryImages = Array.isArray(item.images) && item.images.length > 0
+        ? item.images
+        : [item.image || 'assets/images/banner/hero_bg.png'];
+    currentGalleryIndex = 0;
 
-    const bsModal = new bootstrap.Modal(document.getElementById('newsDetailModal'));
+    const mainImg = document.getElementById('modalNewsImg');
+    if (mainImg) {
+        mainImg.src = currentGalleryImages[0];
+        mainImg.onerror = function() {
+            this.onerror = null;
+            this.src = 'assets/images/banner/hero_bg.png';
+        };
+    }
+
+    const prevBtn = document.getElementById('newsGalleryPrev');
+    const nextBtn = document.getElementById('newsGalleryNext');
+    const counter = document.getElementById('newsGalleryCounter');
+    const thumbStrip = document.getElementById('modalNewsThumbs');
+
+    if (currentGalleryImages.length > 1) {
+        if (prevBtn) prevBtn.classList.remove('d-none');
+        if (nextBtn) nextBtn.classList.remove('d-none');
+        if (counter) {
+            counter.classList.remove('d-none');
+            counter.innerText = `រូបទី 1 នៃ ${currentGalleryImages.length}`;
+        }
+        if (thumbStrip) {
+            thumbStrip.classList.remove('d-none');
+            thumbStrip.innerHTML = currentGalleryImages.map((src, i) => `
+                <div class="news-thumb-item ${i === 0 ? 'active-thumb' : ''}" onclick="updateNewsGalleryUI(${i})">
+                    <img src="${src}" alt="Thumb ${i+1}" onerror="this.onerror=null; this.src='assets/images/banner/hero_bg.png'">
+                </div>
+            `).join('');
+        }
+    } else {
+        if (prevBtn) prevBtn.classList.add('d-none');
+        if (nextBtn) nextBtn.classList.add('d-none');
+        if (counter) counter.classList.add('d-none');
+        if (thumbStrip) {
+            thumbStrip.classList.add('d-none');
+            thumbStrip.innerHTML = '';
+        }
+    }
+
+    document.getElementById('modalNewsTitle').innerText = item.title;
+    document.getElementById('modalNewsDate').innerText = (item.date || '') + (item.author ? (' | ដោយ៖ ' + item.author) : '');
+    
+    // Render formatted paragraph content with clean line spacing
+    const contentEl = document.getElementById('modalNewsContent');
+    if (contentEl) {
+        contentEl.innerHTML = formatArticleContent(item.content || item.summary || '');
+    }
+
+    const bsModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('newsDetailModal'));
     bsModal.show();
 }
 
@@ -688,12 +833,121 @@ let editingKnowledgeId = null;
 let editingStandardId = null;
 let editingStaffId = null;
 
+let currentActivityImages = [];
+let currentKnowledgeImages = [];
+let currentGalleryImages = [];
+let currentGalleryIndex = 0;
+
 // Helper for live image preview update
 function updateImagePreview(inputId, previewImgId, value) {
     const inputEl = document.getElementById(inputId);
     const imgEl = document.getElementById(previewImgId);
     if (inputEl && value !== undefined) inputEl.value = value;
     if (imgEl && value) imgEl.src = value;
+}
+
+// ------------------------------------------
+// ADMIN MULTI-IMAGE PREVIEW MANAGEMENT
+// ------------------------------------------
+
+// Activity Multi-Image Preview Renderer
+function renderActivityImagePreviews() {
+    const listEl = document.getElementById('actImagesPreviewList');
+    const hiddenInput = document.getElementById('actImage');
+    if (!listEl) return;
+
+    if (!currentActivityImages || currentActivityImages.length === 0) {
+        currentActivityImages = ['assets/images/activities/stem_fair.png'];
+    }
+
+    if (hiddenInput) {
+        hiddenInput.value = currentActivityImages[0];
+    }
+
+    listEl.innerHTML = currentActivityImages.map((src, idx) => `
+        <div class="admin-img-card ${idx === 0 ? 'is-cover' : ''}" title="${idx === 0 ? 'រូបភាពគម្រប (Cover Photo)' : 'រូបភាពទី ' + (idx + 1)}">
+            <img src="${src}" alt="Preview ${idx+1}" onerror="this.onerror=null; this.src='assets/images/banner/hero_bg.png'">
+            ${idx === 0 ? '<span class="cover-badge"><i class="fa-solid fa-star"></i> គម្រប</span>' : ''}
+            <button type="button" class="remove-img-btn" onclick="removeActivityImage(${idx})" title="លុបរូបភាពនេះ">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    `).join('');
+}
+
+function addActivityImage(src) {
+    if (!src) return;
+    if (!currentActivityImages) currentActivityImages = [];
+    if (!currentActivityImages.includes(src)) {
+        currentActivityImages.push(src);
+    }
+    renderActivityImagePreviews();
+}
+
+function removeActivityImage(index) {
+    if (currentActivityImages.length <= 1) {
+        showAdminToast('ត្រូវមានរូបភាពយ៉ាងតិច ១ សម្រាប់អត្ថបទ!', 'warning');
+        return;
+    }
+    currentActivityImages.splice(index, 1);
+    renderActivityImagePreviews();
+}
+
+function addActivityImageFromInput() {
+    const input = document.getElementById('actAddUrlInput');
+    if (!input || !input.value.trim()) return;
+    addActivityImage(input.value.trim());
+    input.value = '';
+}
+
+// Knowledge Multi-Image Preview Renderer
+function renderKnowledgeImagePreviews() {
+    const listEl = document.getElementById('knowImagesPreviewList');
+    const hiddenInput = document.getElementById('knowImage');
+    if (!listEl) return;
+
+    if (!currentKnowledgeImages || currentKnowledgeImages.length === 0) {
+        currentKnowledgeImages = ['assets/images/knowledge/digital_learning.png'];
+    }
+
+    if (hiddenInput) {
+        hiddenInput.value = currentKnowledgeImages[0];
+    }
+
+    listEl.innerHTML = currentKnowledgeImages.map((src, idx) => `
+        <div class="admin-img-card ${idx === 0 ? 'is-cover' : ''}" title="${idx === 0 ? 'រូបភាពគម្រប (Cover Photo)' : 'រូបភាពទី ' + (idx + 1)}">
+            <img src="${src}" alt="Preview ${idx+1}" onerror="this.onerror=null; this.src='assets/images/banner/hero_bg.png'">
+            ${idx === 0 ? '<span class="cover-badge"><i class="fa-solid fa-star"></i> គម្រប</span>' : ''}
+            <button type="button" class="remove-img-btn" onclick="removeKnowledgeImage(${idx})" title="លុបរូបភាពនេះ">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    `).join('');
+}
+
+function addKnowledgeImage(src) {
+    if (!src) return;
+    if (!currentKnowledgeImages) currentKnowledgeImages = [];
+    if (!currentKnowledgeImages.includes(src)) {
+        currentKnowledgeImages.push(src);
+    }
+    renderKnowledgeImagePreviews();
+}
+
+function removeKnowledgeImage(index) {
+    if (currentKnowledgeImages.length <= 1) {
+        showAdminToast('ត្រូវមានរូបភាពយ៉ាងតិច ១ សម្រាប់អត្ថបទ!', 'warning');
+        return;
+    }
+    currentKnowledgeImages.splice(index, 1);
+    renderKnowledgeImagePreviews();
+}
+
+function addKnowledgeImageFromInput() {
+    const input = document.getElementById('knowAddUrlInput');
+    if (!input || !input.value.trim()) return;
+    addKnowledgeImage(input.value.trim());
+    input.value = '';
 }
 
 function showAdminToast(message, type = 'success') {
@@ -856,12 +1110,17 @@ function initAdminControls() {
     if (addActForm) {
         addActForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            const images = currentActivityImages.length > 0
+                ? currentActivityImages
+                : ['assets/images/activities/04-08-26.jpg'];
+
             const actData = {
                 title: document.getElementById('actTitle').value.trim(),
                 category: document.getElementById('actCategory').value,
                 date: document.getElementById('actDate').value.trim() || new Date().toLocaleDateString('km-KH'),
                 author: document.getElementById('actAuthor').value.trim(),
-                image: document.getElementById('actImage').value.trim() || 'assets/images/activities/04-08-26.jpg',
+                image: images[0],
+                images: [...images],
                 summary: document.getElementById('actSummary').value.trim(),
                 content: document.getElementById('actContent').value.trim()
             };
@@ -894,13 +1153,18 @@ function initAdminControls() {
     if (addKnowForm) {
         addKnowForm.addEventListener('submit', (e) => {
             e.preventDefault();
+            const images = currentKnowledgeImages.length > 0
+                ? currentKnowledgeImages
+                : ['assets/images/knowledge/digital_learning.png'];
+
             const knowData = {
                 title: document.getElementById('knowTitle').value.trim(),
                 category: document.getElementById('knowCategory').value,
                 date: document.getElementById('knowDate').value.trim() || new Date().toLocaleDateString('km-KH'),
                 author: document.getElementById('knowAuthor').value.trim(),
                 readTime: document.getElementById('knowReadTime').value.trim() || '៥ នាទី',
-                image: document.getElementById('knowImage').value.trim() || 'assets/images/knowledge/digital_learning.png',
+                image: images[0],
+                images: [...images],
                 downloadFile: document.getElementById('knowFile').value.trim() || 'assets/docs/digital_learning_guide.pdf',
                 summary: document.getElementById('knowSummary').value.trim(),
                 content: document.getElementById('knowContent').value.trim()
@@ -1012,64 +1276,13 @@ function initAdminControls() {
     }
 }
 
-function refreshActivityImageDropdown(selectedPath) {
-    const selectEl = document.getElementById('actImageSelect');
-    if (!selectEl) return;
-
-    const defaultImages = [
-        'assets/images/activities/04-08-26.jpg',
-        'assets/images/activities/stem_fair.png',
-        'assets/images/activities/sports_day.png',
-        'assets/images/knowledge/digital_learning.png',
-        'assets/images/banner/hero_bg.png'
-    ];
-
-    let customImages = [];
-    try {
-        const saved = localStorage.getItem('oudong_custom_activity_images');
-        if (saved) customImages = JSON.parse(saved);
-    } catch (e) {}
-
-    const dataImages = (SCHOOL_DATA.activities || []).map(a => a.image).filter(Boolean);
-
-    const allImages = Array.from(new Set([...defaultImages, ...dataImages, ...customImages]));
-    if (selectedPath && !allImages.includes(selectedPath)) {
-        allImages.push(selectedPath);
-    }
-
-    selectEl.innerHTML = '';
-    allImages.forEach(path => {
-        const opt = document.createElement('option');
-        opt.value = path;
-        opt.textContent = path;
-        if (path === selectedPath) opt.selected = true;
-        selectEl.appendChild(opt);
-    });
-}
-
-function addCustomImageToDropdown(selectId, imagePath) {
-    let customImages = [];
-    try {
-        const saved = localStorage.getItem('oudong_custom_activity_images');
-        if (saved) customImages = JSON.parse(saved);
-    } catch (e) {}
-
-    if (!customImages.includes(imagePath)) {
-        customImages.push(imagePath);
-        localStorage.setItem('oudong_custom_activity_images', JSON.stringify(customImages));
-    }
-
-    refreshActivityImageDropdown(imagePath);
-}
-
 // Helper functions for Edit & Delete Modal Actions
 function prepareAddActivityModal() {
     editingActivityId = null;
     const form = document.getElementById('addActivityForm');
     if (form) form.reset();
-    const defaultPath = 'assets/images/activities/04-08-26.jpg';
-    updateImagePreview('actImage', 'actPreview', defaultPath);
-    refreshActivityImageDropdown(defaultPath);
+    currentActivityImages = ['assets/images/activities/04-08-26.jpg'];
+    renderActivityImagePreviews();
 }
 
 function editActivity(id) {
@@ -1080,11 +1293,13 @@ function editActivity(id) {
     document.getElementById('actCategory').value = item.category;
     document.getElementById('actDate').value = item.date;
     document.getElementById('actAuthor').value = item.author;
-    document.getElementById('actImage').value = item.image;
     document.getElementById('actSummary').value = item.summary;
     document.getElementById('actContent').value = item.content;
-    updateImagePreview('actImage', 'actPreview', item.image);
-    refreshActivityImageDropdown(item.image);
+    
+    currentActivityImages = Array.isArray(item.images) && item.images.length > 0
+        ? [...item.images]
+        : [item.image || 'assets/images/activities/stem_fair.png'];
+    renderActivityImagePreviews();
 
     const modalEl = document.getElementById('addActivityModal');
     if (modalEl) {
@@ -1108,7 +1323,8 @@ function prepareAddKnowledgeModal() {
     editingKnowledgeId = null;
     const form = document.getElementById('addKnowledgeForm');
     if (form) form.reset();
-    updateImagePreview('knowImage', 'knowPreview', 'assets/images/knowledge/digital_learning.png');
+    currentKnowledgeImages = ['assets/images/knowledge/digital_learning.png'];
+    renderKnowledgeImagePreviews();
 }
 
 function editKnowledge(id) {
@@ -1120,11 +1336,14 @@ function editKnowledge(id) {
     document.getElementById('knowDate').value = item.date;
     document.getElementById('knowAuthor').value = item.author;
     document.getElementById('knowReadTime').value = item.readTime;
-    document.getElementById('knowImage').value = item.image;
     document.getElementById('knowFile').value = item.downloadFile;
     document.getElementById('knowSummary').value = item.summary;
     document.getElementById('knowContent').value = item.content;
-    updateImagePreview('knowImage', 'knowPreview', item.image);
+
+    currentKnowledgeImages = Array.isArray(item.images) && item.images.length > 0
+        ? [...item.images]
+        : [item.image || 'assets/images/knowledge/digital_learning.png'];
+    renderKnowledgeImagePreviews();
 
     const modalEl = document.getElementById('addKnowledgeModal');
     if (modalEl) {
@@ -1223,42 +1442,39 @@ function deleteStaff(id) {
 
 // Function to handle local Browse file picking for images and PDFs
 function setupBrowseFilePickers() {
-    const actFilePicker = document.getElementById('actFilePicker');
-    if (actFilePicker) {
-        actFilePicker.addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (file) {
+    // Multi-image picker for Activities
+    const actMultiFilePicker = document.getElementById('actMultiFilePicker');
+    if (actMultiFilePicker) {
+        actMultiFilePicker.addEventListener('change', function (e) {
+            const files = Array.from(e.target.files);
+            if (files.length === 0) return;
+            
+            files.forEach(file => {
                 const imagePath = `assets/images/activities/${file.name}`;
-                const actImageInput = document.getElementById('actImage');
-                if (actImageInput) actImageInput.value = imagePath;
-
                 const reader = new FileReader();
                 reader.onload = function (evt) {
-                    const actPreview = document.getElementById('actPreview');
-                    if (actPreview) actPreview.src = evt.target.result;
-                    addCustomImageToDropdown('actImageSelect', imagePath);
+                    addActivityImage(evt.target.result || imagePath);
                 };
                 reader.readAsDataURL(file);
-            }
+            });
         });
     }
 
-    const knowFilePicker = document.getElementById('knowFilePicker');
-    if (knowFilePicker) {
-        knowFilePicker.addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (file) {
-                const imagePath = `assets/images/knowledge/${file.name}`;
-                const knowImageInput = document.getElementById('knowImage');
-                if (knowImageInput) knowImageInput.value = imagePath;
+    // Multi-image picker for Knowledge
+    const knowMultiFilePicker = document.getElementById('knowMultiFilePicker');
+    if (knowMultiFilePicker) {
+        knowMultiFilePicker.addEventListener('change', function (e) {
+            const files = Array.from(e.target.files);
+            if (files.length === 0) return;
 
+            files.forEach(file => {
+                const imagePath = `assets/images/knowledge/${file.name}`;
                 const reader = new FileReader();
                 reader.onload = function (evt) {
-                    const knowPreview = document.getElementById('knowPreview');
-                    if (knowPreview) knowPreview.src = evt.target.result;
+                    addKnowledgeImage(evt.target.result || imagePath);
                 };
                 reader.readAsDataURL(file);
-            }
+            });
         });
     }
 
